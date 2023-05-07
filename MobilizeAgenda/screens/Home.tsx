@@ -65,24 +65,32 @@ const Home = () => {
 
         <View style={styles.squareContainer}>
           <View style={styles.squareRow}>
-            <View style={styles.square1}>
+            <TouchableOpacity style={styles.square1}>
               <Image source={ImgSquare1} style={styles.SquareImage} />
               <Text style={styles.squareText}>Noite de karaoke</Text>
-            </View>
-            <View style={styles.square2}>
+              <Text style={styles.squareText}>Café Onófrio</Text>
+              <Text style={styles.squareText}>22h-23h</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.square2}>
               <Image source={ImgSquare2} style={styles.SquareImage} />
               <Text style={styles.squareText}>Jogo Basketball</Text>
-            </View>
+              <Text style={styles.squareText}>Pavilhão da Trofa</Text>
+              <Text style={styles.squareText}>22h-23h</Text>
+            </TouchableOpacity>
           </View>
           <View style={styles.squareRow}>
-            <View style={styles.square3}>
+            <TouchableOpacity style={styles.square3}>
               <Image source={ImgSquare3} style={styles.SquareImage} />
               <Text style={styles.squareText}>Teatro</Text>
-            </View>
-            <View style={styles.square1}>
+              <Text style={styles.squareText}>Tivoli</Text>
+              <Text style={styles.squareText}>22h-23h</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.square1}>
               <Image source={ImgSquare1} style={styles.SquareImage} />
               <Text style={styles.squareText}>Noite de karaoke</Text>
-            </View>
+              <Text style={styles.squareText}>Café Onófrio</Text>
+              <Text style={styles.squareText}>22h-23h</Text>
+            </TouchableOpacity>
           </View>
         </View>
 
@@ -92,24 +100,32 @@ const Home = () => {
 
         <View style={styles.squareContainer}>
           <View style={styles.squareRow}>
-            <View style={styles.square1}>
+            <TouchableOpacity style={styles.square1}>
               <Image source={ImgSquare1} style={styles.SquareImage} />
               <Text style={styles.squareText}>Noite de karaoke</Text>
-            </View>
-            <View style={styles.square2}>
+              <Text style={styles.squareText}>Café Onófrio</Text>
+              <Text style={styles.squareText}>22h-23h</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.square2}>
               <Image source={ImgSquare2} style={styles.SquareImage} />
               <Text style={styles.squareText}>Jogo Basketball</Text>
-            </View>
+              <Text style={styles.squareText}>Pavilhão da Trofa</Text>
+              <Text style={styles.squareText}>22h-23h</Text>
+            </TouchableOpacity>
           </View>
           <View style={styles.squareRow}>
-            <View style={styles.square3}>
+            <TouchableOpacity style={styles.square3}>
               <Image source={ImgSquare3} style={styles.SquareImage} />
               <Text style={styles.squareText}>Teatro</Text>
-            </View>
-            <View style={styles.square1}>
+              <Text style={styles.squareText}>Tivoli</Text>
+              <Text style={styles.squareText}>22h-23h</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.square1}>
               <Image source={ImgSquare1} style={styles.SquareImage} />
               <Text style={styles.squareText}>Noite de karaoke</Text>
-            </View>
+              <Text style={styles.squareText}>Café Onófrio</Text>
+              <Text style={styles.squareText}>22h-23h</Text>
+            </TouchableOpacity>
           </View>
         </View>
 
@@ -119,24 +135,32 @@ const Home = () => {
 
         <View style={styles.squareContainer}>
           <View style={styles.squareRow}>
-            <View style={styles.square1}>
+            <TouchableOpacity style={styles.square1}>
               <Image source={ImgSquare1} style={styles.SquareImage} />
               <Text style={styles.squareText}>Noite de karaoke</Text>
-            </View>
-            <View style={styles.square2}>
+              <Text style={styles.squareText}>Café Onófrio</Text>
+              <Text style={styles.squareText}>22h-23h</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.square2}>
               <Image source={ImgSquare2} style={styles.SquareImage} />
               <Text style={styles.squareText}>Jogo Basketball</Text>
-            </View>
+              <Text style={styles.squareText}>Pavilhão da Trofa</Text>
+              <Text style={styles.squareText}>22h-23h</Text>
+            </TouchableOpacity>
           </View>
           <View style={styles.squareRow}>
-            <View style={styles.square3}>
+            <TouchableOpacity style={styles.square3}>
               <Image source={ImgSquare3} style={styles.SquareImage} />
               <Text style={styles.squareText}>Teatro</Text>
-            </View>
-            <View style={styles.square1}>
+              <Text style={styles.squareText}>Tivoli</Text>
+              <Text style={styles.squareText}>22h-23h</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.square1}>
               <Image source={ImgSquare1} style={styles.SquareImage} />
               <Text style={styles.squareText}>Noite de karaoke</Text>
-            </View>
+              <Text style={styles.squareText}>Café Onófrio</Text>
+              <Text style={styles.squareText}>22h-23h</Text>
+            </TouchableOpacity>
           </View>
         </View>
       </ScrollView>
@@ -177,7 +201,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     padding: 10,
-    backgroundColor: '#f2f2f2',
+    backgroundColor: '#ffff',
   },
   searchInput: {
     flex: 1,
@@ -320,7 +344,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#00B8D9',
   },
   squareText: {
-    color: '#000',
+    color: '#fff',
     fontWeight: 'bold'
   },
   squareRow: {
@@ -336,7 +360,6 @@ const styles = StyleSheet.create({
     marginVertical: 10,
     borderRadius: 8,
     borderWidth: 1,
-    borderColor: '#ccc',
   },
   scrollViewContainer: {
     flex: 1,
