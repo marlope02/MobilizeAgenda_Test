@@ -57,7 +57,13 @@ const Home = () => {
           <Text style={styles.searchButtonText}>Search</Text>
         </TouchableOpacity>
       </View>
-      <ScrollView contentContainerStyle={styles.scrollViewContainer}>
+
+
+
+
+
+
+      <ScrollView style={styles.scrollVertical}>
 
         <View style={styles.orContainer}>
           <Text style={styles.orTexto}>Eventos perto de ti</Text>
@@ -163,7 +169,81 @@ const Home = () => {
             </TouchableOpacity>
           </View>
         </View>
+
+
+        <View style={styles.orContainer}>
+          <Text style={styles.orTexto}>Cultura perto de ti</Text>
+        </View>
+
+        <View style={styles.squareContainer}>
+          <View style={styles.squareRow}>
+            <TouchableOpacity style={styles.square1}>
+              <Image source={ImgSquare1} style={styles.SquareImage} />
+              <Text style={styles.squareText}>Noite de karaoke</Text>
+              <Text style={styles.squareText}>Café Onófrio</Text>
+              <Text style={styles.squareText}>22h-23h</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.square2}>
+              <Image source={ImgSquare2} style={styles.SquareImage} />
+              <Text style={styles.squareText}>Jogo Basketball</Text>
+              <Text style={styles.squareText}>Pavilhão da Trofa</Text>
+              <Text style={styles.squareText}>22h-23h</Text>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.squareRow}>
+            <TouchableOpacity style={styles.square3}>
+              <Image source={ImgSquare3} style={styles.SquareImage} />
+              <Text style={styles.squareText}>Teatro</Text>
+              <Text style={styles.squareText}>Tivoli</Text>
+              <Text style={styles.squareText}>22h-23h</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.square1}>
+              <Image source={ImgSquare1} style={styles.SquareImage} />
+              <Text style={styles.squareText}>Noite de karaoke</Text>
+              <Text style={styles.squareText}>Café Onófrio</Text>
+              <Text style={styles.squareText}>22h-23h</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+
+
+        <View style={styles.orContainer}>
+          <Text style={styles.orTexto}>Desporto perto de ti</Text>
+        </View>
+
+        <View style={styles.squareContainer}>
+          <View style={styles.squareRow}>
+            <TouchableOpacity style={styles.square1}>
+              <Image source={ImgSquare1} style={styles.SquareImage} />
+              <Text style={styles.squareText}>Noite de karaoke</Text>
+              <Text style={styles.squareText}>Café Onófrio</Text>
+              <Text style={styles.squareText}>22h-23h</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.square2}>
+              <Image source={ImgSquare2} style={styles.SquareImage} />
+              <Text style={styles.squareText}>Jogo Basketball</Text>
+              <Text style={styles.squareText}>Pavilhão da Trofa</Text>
+              <Text style={styles.squareText}>22h-23h</Text>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.squareRow}>
+            <TouchableOpacity style={styles.square3}>
+              <Image source={ImgSquare3} style={styles.SquareImage} />
+              <Text style={styles.squareText}>Teatro</Text>
+              <Text style={styles.squareText}>Tivoli</Text>
+              <Text style={styles.squareText}>22h-23h</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.square1}>
+              <Image source={ImgSquare1} style={styles.SquareImage} />
+              <Text style={styles.squareText}>Noite de karaoke</Text>
+              <Text style={styles.squareText}>Café Onófrio</Text>
+              <Text style={styles.squareText}>22h-23h</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+        
       </ScrollView>
+      
 
 
 
@@ -177,13 +257,13 @@ const Home = () => {
         <TouchableOpacity style={styles.navigationButton2} onPress={handleNavigation2}>
           <Text style={styles.navigationButtonText2}>Fav</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.navigationButton3} onPress={handleNavigation2}>
+        <TouchableOpacity style={styles.navigationButton3} onPress={handleNavigation3}>
           <Text style={styles.navigationButtonText3}>Chat</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.navigationButton4} onPress={handleNavigation2}>
+        <TouchableOpacity style={styles.navigationButton4} onPress={handleNavigation4}>
           <Text style={styles.navigationButtonText4}>Cup</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.navigationButton5} onPress={handleNavigation2}>
+        <TouchableOpacity style={styles.navigationButton5} onPress={handleNavigation5}>
           <Text style={styles.navigationButtonText5}>Settings</Text>
         </TouchableOpacity>
       </View>
@@ -195,6 +275,7 @@ const Home = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    justifyContent: 'flex-start',
   },
   searchContainer: {
     flexDirection: 'row',
@@ -247,7 +328,7 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     paddingHorizontal: 20,
     backgroundColor: '#008080',
-    borderRadius: 5,
+    borderRadius: 8,
   },
   navigationButtonText1: {
     color: '#fff',
@@ -257,7 +338,7 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     paddingHorizontal: 20,
     backgroundColor: '#008080',
-    borderRadius: 5,
+    borderRadius: 8,
   },
   navigationButtonText2: {
     color: '#fff',
@@ -267,7 +348,7 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     paddingHorizontal: 20,
     backgroundColor: '#008080',
-    borderRadius: 5,
+    borderRadius: 8,
   },
   navigationButtonText3: {
     color: '#fff',
@@ -277,7 +358,7 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     paddingHorizontal: 20,
     backgroundColor: '#008080',
-    borderRadius: 5,
+    borderRadius: 8,
   },
   navigationButtonText4: {
     color: '#fff',
@@ -287,7 +368,7 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     paddingHorizontal: 20,
     backgroundColor: '#008080',
-    borderRadius: 5,
+    borderRadius: 8,
   },
   navigationButtonText5: {
     color: '#fff',
@@ -361,9 +442,11 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     borderWidth: 1,
   },
-  scrollViewContainer: {
+  scrollVertical: {
     flex: 1,
-    padding: 10,
+    marginTop: 10,
+    marginLeft: 10,
+    marginDown: 10,
   },
 });
 
