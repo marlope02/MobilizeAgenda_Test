@@ -1,25 +1,27 @@
 import React, { useState } from 'react';
-import { StyleSheet, ImageBackground, View, TextInput, TouchableOpacity, Text, Image } from 'react-native';
-//import { useNavigation, NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator} from '@react-navigation/stack';
+import { StyleSheet, ImageBackground, View, TextInput, TouchableOpacity, Text, Image, Alert } from 'react-native';
 
-const image = require('./assets/background.jpg');
-const googleIcon = require('./assets/google.png');
-const facebookIcon = require('./assets/facebook.png');
-const twitterIcon = require('./assets/twitter.png');
-const appleIcon = require('./assets/apple.png');
+
+interface SigninScreenProps {
+  navigation: any;
+}
 
 
 
-const Signin = () => {
+
+
+const Signin = (props: SigninScreenProps) => {
+
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const handleLogin = () => {
-    // Handle login logic here
+    props.navigation.navigate("Home")
   };
   
   const handleSignup = () => {
+    props.navigation.navigate("Signup")
   };
 
 
@@ -27,7 +29,7 @@ const Signin = () => {
   return (
     
         
-    <ImageBackground source={image} style={styles.background}>
+    <ImageBackground source={require('./assets/background.jpg')} style={styles.background}>
       <View style={styles.overlay}>
         <View style={styles.form}>
           <Text style={styles.mobilize}>MobilizeAgenda</Text>
@@ -52,16 +54,16 @@ const Signin = () => {
           </View>
           <View style={styles.socialButtonsContainer}>
             <TouchableOpacity style={styles.socialButton}>
-              <Image source={googleIcon} style={styles.socialIcon} />
+              <Image source={require('./assets/google.png')} style={styles.socialIcon} />
             </TouchableOpacity>
             <TouchableOpacity style={styles.socialButton}>
-              <Image source={facebookIcon} style={styles.socialIcon} />
+              <Image source={require('./assets/facebook.png')} style={styles.socialIcon} />
             </TouchableOpacity>
             <TouchableOpacity style={styles.socialButton}>
-              <Image source={twitterIcon} style={styles.socialIcon} />
+              <Image source={require('./assets/twitter.png')} style={styles.socialIcon} />
             </TouchableOpacity>
             <TouchableOpacity style={styles.socialButton}>
-              <Image source={appleIcon} style={styles.socialIcon} />
+              <Image source={require('./assets/apple.png')} style={styles.socialIcon} />
             </TouchableOpacity>
           </View>
           <TouchableOpacity style={styles.button} onPress={handleLogin}>

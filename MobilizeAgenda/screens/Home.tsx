@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, ScrollView, Image } from 'react-native';
-//import Ionicons from 'react-native-ionicons';
+import { Icon } from 'react-native-elements';
+
 
 
 
@@ -36,15 +37,15 @@ const Home = () => {
     // Handle navigation to page 5 here
   }
 
-  const ImgSquare1 = require('./assets/karaoke.jpg');
-  const ImgSquare2 = require('./assets/basket.jpg');
-  const ImgSquare3 = require('./assets/teatro.jpg');
+
 
 
 
   return (
 
     <View style={styles.container}>
+
+
       <View style={styles.searchContainer}>
         <TextInput
           style={styles.searchInput}
@@ -53,15 +54,39 @@ const Home = () => {
           onChangeText={handleSearchTextChange}
           onSubmitEditing={handleSearch}
         />
-        <TouchableOpacity style={styles.searchButton} onPress={handleSearch}>
-          <Text style={styles.searchButtonText}>Search</Text>
+        <TouchableOpacity onPress={handleSearch}>
+          <Icon name='search' color='#000' />
         </TouchableOpacity>
       </View>
 
+      
+      <View style={styles.horizontalScroll}>
+        <ScrollView horizontal={true}>
+          <TouchableOpacity style={styles.horizontalScrollItem}>
+            <Text style={styles.horizontalScrollText}>Para Ti</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.horizontalScrollItem}>
+            <Text style={styles.horizontalScrollText}>Desporto</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.horizontalScrollItem}>
+            <Text style={styles.horizontalScrollText}>Cultura</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.horizontalScrollItem}>
+            <Text style={styles.horizontalScrollText}>Andebol</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.horizontalScrollItem}>
+            <Text style={styles.horizontalScrollText}>Música</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.horizontalScrollItem}>
+            <Text style={styles.horizontalScrollText}>Teatro</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.horizontalScrollItem}>
+            <Text style={styles.horizontalScrollText}>Basket</Text>
+          </TouchableOpacity>
+        </ScrollView>
+      </View>
 
-
-
-
+      <View style={styles.line}></View>
 
       <ScrollView style={styles.scrollVertical}>
 
@@ -71,32 +96,26 @@ const Home = () => {
 
         <View style={styles.squareContainer}>
           <View style={styles.squareRow}>
-            <TouchableOpacity style={styles.square1}>
-              <Image source={ImgSquare1} style={styles.SquareImage} />
-              <Text style={styles.squareText}>Noite de karaoke</Text>
-              <Text style={styles.squareText}>Café Onófrio</Text>
-              <Text style={styles.squareText}>22h-23h</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.square2}>
-              <Image source={ImgSquare2} style={styles.SquareImage} />
-              <Text style={styles.squareText}>Jogo Basketball</Text>
-              <Text style={styles.squareText}>Pavilhão da Trofa</Text>
-              <Text style={styles.squareText}>22h-23h</Text>
-            </TouchableOpacity>
-          </View>
-          <View style={styles.squareRow}>
-            <TouchableOpacity style={styles.square3}>
-              <Image source={ImgSquare3} style={styles.SquareImage} />
-              <Text style={styles.squareText}>Teatro</Text>
-              <Text style={styles.squareText}>Tivoli</Text>
-              <Text style={styles.squareText}>22h-23h</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.square1}>
-              <Image source={ImgSquare1} style={styles.SquareImage} />
-              <Text style={styles.squareText}>Noite de karaoke</Text>
-              <Text style={styles.squareText}>Café Onófrio</Text>
-              <Text style={styles.squareText}>22h-23h</Text>
-            </TouchableOpacity>
+            <ScrollView horizontal={true}>
+              <TouchableOpacity style={styles.square1}>
+                <Image source={require('./assets/karaoke.jpg')} style={styles.SquareImage} />
+                <Text style={styles.squareText}>Noite de karaoke</Text>
+                <Text style={styles.squareText}>Café Onófrio</Text>
+                <Text style={styles.squareText}>22h-23h</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.square2}>
+                <Image source={require('./assets/basket.jpg')} style={styles.SquareImage} />
+                <Text style={styles.squareText}>Jogo Basketball</Text>
+                <Text style={styles.squareText}>Pavilhão da Trofa</Text>
+                <Text style={styles.squareText}>22h-23h</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.square3}>
+                <Image source={require('./assets/teatro.jpg')} style={styles.SquareImage} />
+                <Text style={styles.squareText}>Teatro</Text>
+                <Text style={styles.squareText}>Tivoli</Text>
+                <Text style={styles.squareText}>22h-23h</Text>
+              </TouchableOpacity>
+            </ScrollView>
           </View>
         </View>
 
@@ -106,34 +125,29 @@ const Home = () => {
 
         <View style={styles.squareContainer}>
           <View style={styles.squareRow}>
-            <TouchableOpacity style={styles.square1}>
-              <Image source={ImgSquare1} style={styles.SquareImage} />
-              <Text style={styles.squareText}>Noite de karaoke</Text>
-              <Text style={styles.squareText}>Café Onófrio</Text>
-              <Text style={styles.squareText}>22h-23h</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.square2}>
-              <Image source={ImgSquare2} style={styles.SquareImage} />
-              <Text style={styles.squareText}>Jogo Basketball</Text>
-              <Text style={styles.squareText}>Pavilhão da Trofa</Text>
-              <Text style={styles.squareText}>22h-23h</Text>
-            </TouchableOpacity>
-          </View>
-          <View style={styles.squareRow}>
-            <TouchableOpacity style={styles.square3}>
-              <Image source={ImgSquare3} style={styles.SquareImage} />
-              <Text style={styles.squareText}>Teatro</Text>
-              <Text style={styles.squareText}>Tivoli</Text>
-              <Text style={styles.squareText}>22h-23h</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.square1}>
-              <Image source={ImgSquare1} style={styles.SquareImage} />
-              <Text style={styles.squareText}>Noite de karaoke</Text>
-              <Text style={styles.squareText}>Café Onófrio</Text>
-              <Text style={styles.squareText}>22h-23h</Text>
-            </TouchableOpacity>
+            <ScrollView horizontal={true}>
+              <TouchableOpacity style={styles.square1}>
+                <Image source={require('./assets/karaoke.jpg')} style={styles.SquareImage} />
+                <Text style={styles.squareText}>Noite de karaoke</Text>
+                <Text style={styles.squareText}>Café Onófrio</Text>
+                <Text style={styles.squareText}>22h-23h</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.square2}>
+                <Image source={require('./assets/basket.jpg')} style={styles.SquareImage} />
+                <Text style={styles.squareText}>Jogo Basketball</Text>
+                <Text style={styles.squareText}>Pavilhão da Trofa</Text>
+                <Text style={styles.squareText}>22h-23h</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.square3}>
+                <Image source={require('./assets/teatro.jpg')} style={styles.SquareImage} />
+                <Text style={styles.squareText}>Teatro</Text>
+                <Text style={styles.squareText}>Tivoli</Text>
+                <Text style={styles.squareText}>22h-23h</Text>
+              </TouchableOpacity>
+            </ScrollView>
           </View>
         </View>
+
 
         <View style={styles.orContainer}>
           <Text style={styles.orTexto}>Desporto ao teu gosto</Text>
@@ -141,35 +155,28 @@ const Home = () => {
 
         <View style={styles.squareContainer}>
           <View style={styles.squareRow}>
-            <TouchableOpacity style={styles.square1}>
-              <Image source={ImgSquare1} style={styles.SquareImage} />
-              <Text style={styles.squareText}>Noite de karaoke</Text>
-              <Text style={styles.squareText}>Café Onófrio</Text>
-              <Text style={styles.squareText}>22h-23h</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.square2}>
-              <Image source={ImgSquare2} style={styles.SquareImage} />
-              <Text style={styles.squareText}>Jogo Basketball</Text>
-              <Text style={styles.squareText}>Pavilhão da Trofa</Text>
-              <Text style={styles.squareText}>22h-23h</Text>
-            </TouchableOpacity>
-          </View>
-          <View style={styles.squareRow}>
-            <TouchableOpacity style={styles.square3}>
-              <Image source={ImgSquare3} style={styles.SquareImage} />
-              <Text style={styles.squareText}>Teatro</Text>
-              <Text style={styles.squareText}>Tivoli</Text>
-              <Text style={styles.squareText}>22h-23h</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.square1}>
-              <Image source={ImgSquare1} style={styles.SquareImage} />
-              <Text style={styles.squareText}>Noite de karaoke</Text>
-              <Text style={styles.squareText}>Café Onófrio</Text>
-              <Text style={styles.squareText}>22h-23h</Text>
-            </TouchableOpacity>
+            <ScrollView horizontal={true}>
+              <TouchableOpacity style={styles.square1}>
+                <Image source={require('./assets/karaoke.jpg')} style={styles.SquareImage} />
+                <Text style={styles.squareText}>Noite de karaoke</Text>
+                <Text style={styles.squareText}>Café Onófrio</Text>
+                <Text style={styles.squareText}>22h-23h</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.square2}>
+                <Image source={require('./assets/basket.jpg')} style={styles.SquareImage} />
+                <Text style={styles.squareText}>Jogo Basketball</Text>
+                <Text style={styles.squareText}>Pavilhão da Trofa</Text>
+                <Text style={styles.squareText}>22h-23h</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.square3}>
+                <Image source={require('./assets/teatro.jpg')} style={styles.SquareImage} />
+                <Text style={styles.squareText}>Teatro</Text>
+                <Text style={styles.squareText}>Tivoli</Text>
+                <Text style={styles.squareText}>22h-23h</Text>
+              </TouchableOpacity>
+            </ScrollView>
           </View>
         </View>
-
 
         <View style={styles.orContainer}>
           <Text style={styles.orTexto}>Cultura perto de ti</Text>
@@ -177,35 +184,28 @@ const Home = () => {
 
         <View style={styles.squareContainer}>
           <View style={styles.squareRow}>
-            <TouchableOpacity style={styles.square1}>
-              <Image source={ImgSquare1} style={styles.SquareImage} />
-              <Text style={styles.squareText}>Noite de karaoke</Text>
-              <Text style={styles.squareText}>Café Onófrio</Text>
-              <Text style={styles.squareText}>22h-23h</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.square2}>
-              <Image source={ImgSquare2} style={styles.SquareImage} />
-              <Text style={styles.squareText}>Jogo Basketball</Text>
-              <Text style={styles.squareText}>Pavilhão da Trofa</Text>
-              <Text style={styles.squareText}>22h-23h</Text>
-            </TouchableOpacity>
-          </View>
-          <View style={styles.squareRow}>
-            <TouchableOpacity style={styles.square3}>
-              <Image source={ImgSquare3} style={styles.SquareImage} />
-              <Text style={styles.squareText}>Teatro</Text>
-              <Text style={styles.squareText}>Tivoli</Text>
-              <Text style={styles.squareText}>22h-23h</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.square1}>
-              <Image source={ImgSquare1} style={styles.SquareImage} />
-              <Text style={styles.squareText}>Noite de karaoke</Text>
-              <Text style={styles.squareText}>Café Onófrio</Text>
-              <Text style={styles.squareText}>22h-23h</Text>
-            </TouchableOpacity>
+            <ScrollView horizontal={true}>
+              <TouchableOpacity style={styles.square1}>
+                <Image source={require('./assets/karaoke.jpg')} style={styles.SquareImage} />
+                <Text style={styles.squareText}>Noite de karaoke</Text>
+                <Text style={styles.squareText}>Café Onófrio</Text>
+                <Text style={styles.squareText}>22h-23h</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.square2}>
+                <Image source={require('./assets/basket.jpg')} style={styles.SquareImage} />
+                <Text style={styles.squareText}>Jogo Basketball</Text>
+                <Text style={styles.squareText}>Pavilhão da Trofa</Text>
+                <Text style={styles.squareText}>22h-23h</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.square3}>
+                <Image source={require('./assets/teatro.jpg')} style={styles.SquareImage} />
+                <Text style={styles.squareText}>Teatro</Text>
+                <Text style={styles.squareText}>Tivoli</Text>
+                <Text style={styles.squareText}>22h-23h</Text>
+              </TouchableOpacity>
+            </ScrollView>
           </View>
         </View>
-
 
         <View style={styles.orContainer}>
           <Text style={styles.orTexto}>Desporto perto de ti</Text>
@@ -213,61 +213,73 @@ const Home = () => {
 
         <View style={styles.squareContainer}>
           <View style={styles.squareRow}>
-            <TouchableOpacity style={styles.square1}>
-              <Image source={ImgSquare1} style={styles.SquareImage} />
-              <Text style={styles.squareText}>Noite de karaoke</Text>
-              <Text style={styles.squareText}>Café Onófrio</Text>
-              <Text style={styles.squareText}>22h-23h</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.square2}>
-              <Image source={ImgSquare2} style={styles.SquareImage} />
-              <Text style={styles.squareText}>Jogo Basketball</Text>
-              <Text style={styles.squareText}>Pavilhão da Trofa</Text>
-              <Text style={styles.squareText}>22h-23h</Text>
-            </TouchableOpacity>
-          </View>
-          <View style={styles.squareRow}>
-            <TouchableOpacity style={styles.square3}>
-              <Image source={ImgSquare3} style={styles.SquareImage} />
-              <Text style={styles.squareText}>Teatro</Text>
-              <Text style={styles.squareText}>Tivoli</Text>
-              <Text style={styles.squareText}>22h-23h</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.square1}>
-              <Image source={ImgSquare1} style={styles.SquareImage} />
-              <Text style={styles.squareText}>Noite de karaoke</Text>
-              <Text style={styles.squareText}>Café Onófrio</Text>
-              <Text style={styles.squareText}>22h-23h</Text>
-            </TouchableOpacity>
+            <ScrollView horizontal={true}>
+              <TouchableOpacity style={styles.square1}>
+                <Image source={require('./assets/karaoke.jpg')} style={styles.SquareImage} />
+                <Text style={styles.squareText}>Noite de karaoke</Text>
+                <Text style={styles.squareText}>Café Onófrio</Text>
+                <Text style={styles.squareText}>22h-23h</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.square2}>
+                <Image source={require('./assets/basket.jpg')} style={styles.SquareImage} />
+                <Text style={styles.squareText}>Jogo Basketball</Text>
+                <Text style={styles.squareText}>Pavilhão da Trofa</Text>
+                <Text style={styles.squareText}>22h-23h</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.square3}>
+                <Image source={require('./assets/teatro.jpg')} style={styles.SquareImage} />
+                <Text style={styles.squareText}>Teatro</Text>
+                <Text style={styles.squareText}>Tivoli</Text>
+                <Text style={styles.squareText}>22h-23h</Text>
+              </TouchableOpacity>
+            </ScrollView>
+
+
+
+
           </View>
         </View>
-        
       </ScrollView>
-      
-
-
-
-
-
-
       <View style={styles.navigationContainer}>
-        <TouchableOpacity style={styles.navigationButton1} onPress={handleNavigation1}>
-          <Text style={styles.navigationButtonText1}>Home</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.navigationButton2} onPress={handleNavigation2}>
-          <Text style={styles.navigationButtonText2}>Fav</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.navigationButton3} onPress={handleNavigation3}>
-          <Text style={styles.navigationButtonText3}>Chat</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.navigationButton4} onPress={handleNavigation4}>
-          <Text style={styles.navigationButtonText4}>Cup</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.navigationButton5} onPress={handleNavigation5}>
-          <Text style={styles.navigationButtonText5}>Settings</Text>
-        </TouchableOpacity>
+        <Icon
+          name="home"
+          type="font-awesome"
+          onPress={handleNavigation1}
+          size={24}
+          color="black"
+        />
+        <Icon
+          name="heart"
+          type="font-awesome"
+          onPress={handleNavigation2}
+          size={24}
+          color="black"
+        />
+        <Icon
+          name="comments"
+          type="font-awesome"
+          onPress={handleNavigation3}
+          size={24}
+          color="black"
+        />
+        <Icon
+          name="coffee"
+          type="font-awesome"
+          onPress={handleNavigation4}
+          size={24}
+          color="black"
+        />
+        <Icon
+          name="cog"
+          type="font-awesome"
+          onPress={handleNavigation5}
+          size={24}
+          color="black"
+        />
       </View>
     </View>
+
+
 
   );
 }
@@ -275,14 +287,43 @@ const Home = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'flex-start',
+    backgroundColor: '#fff',
   },
   searchContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
     padding: 10,
-    backgroundColor: '#ffff',
+    backgroundColor: '#fff',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
+  },
+  horizontalScroll: {
+    height: 20,
+    marginBottom: 5,
+    marginTop: 15,
+    width: '90%',
+    alignSelf: 'center',
+  },
+  horizontalScrollItem: {
+    paddingHorizontal: 10,
+  },
+  horizontalScrollText: {
+    color: '#000',
+    fontSize: 15,
+    fontWeight: 'normal',
+  },
+  line: {
+    borderBottomWidth: 1,
+    borderBottomColor: '#000',
+    width: '90%',
+    alignSelf: 'center',
   },
   searchInput: {
     flex: 1,
@@ -307,22 +348,75 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     marginVertical: 10,
+    paddingHorizontal: 10,
   },
   orTexto: {
     marginHorizontal: 10,
     fontSize: 16,
     color: '#444',
+    fontWeight: 'bold',
   },
+  scrollVertical: {
+    flex: 1,
+    paddingHorizontal: 10,
+    marginBottom: 10,
+  },
+  squareContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    marginBottom: 10,
+  },
+  squareRow: {
+    flexDirection: 'row',
+  },
+  square1: {
+    width: 170,
+    height: 190,
+    backgroundColor: '#FF5630',
+    marginRight: 10,
+    borderRadius: 16,
+    overflow: 'hidden',
+    alignItems: 'center',
+  },
+  square2: {
+    width: 170,
+    height: 190,
+    backgroundColor: '#FFAB00',
+    marginRight: 10,
+    borderRadius: 16,
+    overflow: 'hidden',
+    alignItems: 'center',
+  },
+  square3: {
+    width: 170,
+    height: 190,
+    backgroundColor: '#00B8D9',
+    borderRadius: 16,
+    overflow: 'hidden',
+    alignItems: 'center',
+  },
+  squareText: {
+    marginHorizontal: 5,
+    marginVertical: 2,
+    fontSize: 15,
+    fontWeight: 'bold',
+    color: '#ffff'
+  },
+  SquareImage: {
+    width: 148,
+    height: 85,
+    padding: 10,
+    marginVertical: 10,
+    borderRadius: 8,
+    borderWidth: 1,
+  },
+
   navigationContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+    backgroundColor: '#eee',
     padding: 10,
-    backgroundColor: '#f2f2f2',
-    position: 'absolute',
-    bottom: 0,
-    left: 0,
-    right: 0,
   },
   navigationButton1: {
     paddingVertical: 10,
@@ -374,81 +468,7 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontWeight: 'bold',
   },
-  squareContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    paddingHorizontal: 10,
-    paddingVertical: 5,
-  },
-  square1: {
-    flexDirection: 'column',
-    alignSelf: 'center',
-    alignItems: 'center',
-    height: '100%',
-    width: '48%',
-    aspectRatio: 1,
-    borderWidth: 1,
-    borderRadius: 16,
-    borderColor: '#ccc',
-    overflow: 'hidden',
-    marginBottom: 5,
-    backgroundColor: '#FF5630',
 
-  },
-  square2: {
-    flexDirection: 'column',
-    alignSelf: 'center',
-    alignItems: 'center',
-    height: '100%',
-    width: '48%',
-    aspectRatio: 1,
-    borderWidth: 1,
-    borderRadius: 16,
-    borderColor: '#ccc',
-    overflow: 'hidden',
-    marginBottom: 5,
-    backgroundColor: '#FFAB00'
-  },
-  square3: {
-    flexDirection: 'column',
-    alignSelf: 'center',
-    alignItems: 'center',
-    height: '100%',
-    width: '48%',
-    aspectRatio: 1,
-    borderWidth: 1,
-    borderRadius: 16,
-    borderColor: '#ccc',
-    overflow: 'hidden',
-    marginBottom: 5,
-    backgroundColor: '#00B8D9',
-  },
-  squareText: {
-    color: '#fff',
-    fontWeight: 'bold'
-  },
-  squareRow: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    paddingHorizontal: 10,
-    marginVertical: 10,
-  },
-  SquareImage: {
-    width: 148,
-    height: 85,
-    padding: 10,
-    marginVertical: 10,
-    borderRadius: 8,
-    borderWidth: 1,
-  },
-  scrollVertical: {
-    flex: 1,
-    marginTop: 10,
-    marginLeft: 10,
-    marginDown: 10,
-  },
 });
-
 
 export default Home;

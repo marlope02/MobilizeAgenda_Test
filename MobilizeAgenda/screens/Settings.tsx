@@ -42,48 +42,37 @@ const Settings = () => {
   return (
 
     <View style={styles.container}>
-
-      <View style={styles.row}>
-        <Text style={styles.title}>Definições</Text>
-        <Image source={ImgPerfil} style={styles.imageProfile} />
-      </View>
-      <ScrollView style={styles.scrollViewVertical}>
-
-
-        <View style={styles.column}>
-          <TouchableOpacity style={styles.button} onPress={handleCidade}>
-            
-              <Text style={styles.subtitle}>Cidade</Text>
-              <Text style={styles.description}>Maia</Text>
-
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.button} onPress={handleIdioma}>
-              <Text style={styles.subtitle}>Idioma</Text>
-              <Text style={styles.description}>Português</Text>
-          </TouchableOpacity>
-          <View style={styles.button}>         
-              <Text style={styles.subtitle}>Tema Escuro</Text>
-          </View>
-          <View style={styles.button}>         
-              <Text style={styles.subtitle}>Vibração</Text>
-          </View>
-          <View style={styles.button}>
-              <Text style={styles.subtitle}>Privacidade</Text>
-          </View>
-        </View>
-
-      </ScrollView>
-
-
-
-
-
-
-
-
-
-      
+  <View style={styles.row}>
+    <Text style={styles.title}>Definições</Text>
+    <View style={styles.imageProfileContainer}>
+      <Image source={ImgPerfil} style={styles.imageProfile} />
     </View>
+  </View>
+
+  <View style={styles.space}/>
+
+  <TouchableOpacity style={styles.button} onPress={handleCidade}>
+    <Text style={styles.subtitle}>Cidade</Text>
+    <Text style={[styles.description, styles.descriptionRight]}>Maia</Text>
+  </TouchableOpacity>
+
+  <TouchableOpacity style={styles.button} onPress={handleIdioma}>
+    <Text style={styles.subtitle}>Idioma</Text>
+    <Text style={[styles.description, styles.descriptionRight]}>Português</Text>
+  </TouchableOpacity>
+
+  <View style={styles.button}>
+    <Text style={styles.subtitle}>Tema Escuro</Text>
+  </View>
+
+  <View style={styles.button}>
+    <Text style={styles.subtitle}>Vibração</Text>
+  </View>
+
+  <View style={styles.button}>
+    <Text style={styles.subtitle}>Privacidade</Text>
+  </View>
+</View>
 
   );
 }
@@ -91,70 +80,60 @@ const Settings = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    paddingHorizontal: 20,
+    paddingTop: 20,
+  },
+  row: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
     alignItems: 'center',
-    justifyContent: 'flex-start',
+  },
+  space:{
+    margin:20,
   },
   title: {
-    fontSize: 24,
+    fontSize: 34,
     fontWeight: 'bold',
-    marginTop: 10,
-    color: '#212B36',
-    alignItems: 'flex-start',
-  },
-  /*row: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    paddingHorizontal: 10,
-    marginVertical: 10,
-  },*/
-  column: {
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
-    //marginHorizontal: 1,
-  },
-  scrollViewVertical: {
-    flex: 1,
-    marginTop: 50,
-    marginLeft: 10,
-    marginDown: 10,
-  },
-  subtitle: {
-    fontSize: 18,
-    fontWeight: 'normal',
-    marginTop: 10,
-    color: '#212B36',
     textAlign: 'left',
+    color: '#212B36'
   },
-  description: {
-    fontSize: 15,
-    fontWeight: 'normal',
-    marginTop: 10,
-    color: '#212B36',
-    textAlign: 'right',
-  },
-  button: {
-    marginTop: 10,
-    backgroundColor: '#fff',
-    borderRadius: 8,
-    borderWidth: 1,
-    borderColor: '#919EAB',
-    width: '100%',
-    //height: '40%',
+  imageProfileContainer: {
+    width: 50,
+    height: 50,
     justifyContent: 'center',
-    alignItems: 'flex-start',
-    flexDirection: 'row',
-    alignSelf: 'center',
-    marginBottom: 5,
+    alignItems: 'flex-end',
   },
   imageProfile: {
-    width: 10,
-    height: 10,
-    padding: 10,
-    marginVertical: 10,
+    width: 50,
+    height: 50,
+    borderRadius: 50,
+  },
+  button: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingVertical: 10,
+    paddingHorizontal: 10,
+    borderBottomWidth: 1,
+    borderColor: '#D9D9D9',
     borderRadius: 8,
     borderWidth: 1,
-    alignSelf: 'flex-end',
+    marginTop: 15,
+  },
+  subtitle: {
+    fontSize: 20,
+    fontWeight: 'normal',
+    textAlign: 'left',
+    color: '#212B36'
+  },
+  description: {
+    fontSize: 12,
+    textAlign: 'right',
+    color: '#212B36'
+  },
+  descriptionRight: {
+    flex: 1,
+    textAlign: 'right',
   },
   navigationContainer: {
     flexDirection: 'row',
@@ -217,7 +196,6 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontWeight: 'bold',
   },
-
 });
 
 
