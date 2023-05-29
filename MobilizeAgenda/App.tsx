@@ -1,161 +1,29 @@
-import React, { useState } from 'react';
-import { View, Image, TextInput, Text, StyleSheet, TouchableOpacity } from 'react-native';
-import { Picker } from '@react-native-community/picker';
-import DateTimePicker from '@react-native-community/datetimepicker';
+import React from 'react';
+import { StyleSheet, View, Image, Dimensions, Text, ScrollView, ImageBackground, TouchableOpacity } from 'react-native';
+import { Ionicons } from 'react-native-vector-icons';
 
-const countries = [
-  'United States',
-  'Canada',
-  'United Kingdom',
-  'Australia',
-  'Germany',
-  // Add more countries here
-];
+const { width } = Dimensions.get('window');
 
-const Perfil = () => {
-  const [userData, setUserData] = useState({
-    firstName: 'John',
-    lastName: 'Doe',
-    email: 'johndoe@example.com',
-    birthDate: new Date(),
-    country: 'United States',
-    gender: 'Male',
-    showDatePicker: false,
-  });
+const imageHeight = width / 2;
 
-  const handleInputChange = (field, value) => {
-    setUserData((prevData) => ({
-      ...prevData,
-      [field]: value,
-    }));
-  };
+const handleBack = () => {
+  // Handle navigation to page 5 here
+}
 
-  const toggleDatePicker = () => {
-    setUserData((prevData) => ({
-      ...prevData,
-      showDatePicker: !prevData.showDatePicker,
-    }));
-  };
-
-  const onDateChange = (event, selectedDate) => {
-    const currentDate = selectedDate || userData.birthDate;
-    setUserData((prevData) => ({
-      ...prevData,
-      birthDate: currentDate,
-      showDatePicker: false,
-    }));
-  };
-
-  const handlePasswordChange = () => {
-    // Logic for changing password
-    console.log('Change Password');
-  };
-
-  const handleSignOut = () => {
-    // Logic for signing out
-    console.log('Sign Out');
-  };
-
+const Actividade = () => {
   return (
     <View style={styles.container}>
-      <Image
-        source={require('./assets/background.jpg')}
-        style={styles.backgroundImage}
-      />
-      <View style={styles.content}>
-        <View style={styles.profileContainer}>
-          <Image
-            source={require('./assets/karaoke.jpg')}
-            style={styles.profilePic}
-          />
-        </View>
-        <InputWithTitle
-          title="First Name"
-          value={userData.firstName}
-          onChangeText={(text) => handleInputChange('firstName', text)}
-        />
-        <InputWithTitle
-          title="Last Name"
-          value={userData.lastName}
-          onChangeText={(text) => handleInputChange('lastName', text)}
-        />
-        <InputWithTitle
-          title="Email"
-          value={userData.email}
-          onChangeText={(text) => handleInputChange('email', text)}
-        />
-        <View style={styles.inputContainer}>
-          <Text style={styles.inputTitle}>Birth Date</Text>
-          <TouchableOpacity
-            style={styles.dateInput}
-            onPress={toggleDatePicker}
-          >
-            <Text style={styles.dateText}>{userData.birthDate.toDateString()}</Text>
-          </TouchableOpacity>
-          {userData.showDatePicker && (
-            <DateTimePicker
-              value={userData.birthDate}
-              mode="date"
-              display="default"
-              onChange={onDateChange}
-            />
-          )}
-        </View>
-        <DropdownWithTitle
-          title="Country"
-          value={userData.country}
-          onValueChange={(value) => handleInputChange('country', value)}
-        >
-          {countries.map((country) => (
-            <Picker.Item key={country} label={country} value={country} />
-          ))}
-        </DropdownWithTitle>
-        <DropdownWithTitle 
-          title="Gender"
-          value={userData.gender}
-          onValueChange={(value) => handleInputChange('gender', value)}
-        >
-          <Picker.Item label="Female" value="Female" />
-          <Picker.Item label="Male" value="Male" />
-          <Picker.Item label="Other" value="Other" />
-        </DropdownWithTitle>
-        <View style={styles.buttonsContainer}>
-          <TouchableOpacity style={styles.buttonChange} onPress={handlePasswordChange}>
-            <Text style={styles.buttonTextChange}>Mudar Password</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.buttonSignout} onPress={handleSignOut}>
-            <Text style={styles.buttonTextSignout}>Sign Out</Text>
-          </TouchableOpacity>
-        </View>
-      </View>
-    </View>
-  );
-};
+      <ImageBackground style={styles.image} source={require('./assets/karaoke.jpg')}>
+        <TouchableOpacity onPress={handleBack} style={styles.button}>
+          <Ionicons name="arrow-back" size={25} color="#fff" />
+        </TouchableOpacity>
+      </ImageBackground>
 
-const InputWithTitle = ({ title, value, onChangeText }) => {
-  return (
-    <View style={styles.inputContainer}>
-      <Text style={styles.inputTitle}>{title}</Text>
-      <TextInput
-        style={styles.input}
-        value={value}
-        onChangeText={onChangeText}
-      />
-    </View>
-  );
-};
+      <Text style={styles.title}>Noite de Karaoke</Text>
 
-const DropdownWithTitle = ({ title, value, onValueChange, children }) => {
-  return (
-    <View style={styles.inputContainer}>
-      <Text style={styles.inputTitle}>{title}</Text>
-      <Picker
-        style={styles.dropdown}
-        selectedValue={value}
-        onValueChange={onValueChange}
-      >
-        {children}
-      </Picker>
+      <ScrollView style={styles.description}>
+        {/* Rest of the code */}
+      </ScrollView>
     </View>
   );
 };
@@ -163,99 +31,34 @@ const DropdownWithTitle = ({ title, value, onValueChange, children }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
     alignItems: 'center',
+    justifyContent: 'flex-start',
   },
-  backgroundImage: {
+  image: {
+    width: '100%',
+    height: imageHeight,
+  },
+  button: {
     position: 'absolute',
-    width: '100%',
-    height: '100%',
+    top: 10,
+    left: 10,
+    padding: 10,
+    zIndex: 1,
   },
-  content: {
-    backgroundColor: 'rgba(255, 255, 255, 0.8)',
-    width: '90%',
-    paddingHorizontal: 20,
-    paddingVertical: 40,
-    borderRadius: 10,
-  },
-  profileContainer: {
+  title: {
+    fontSize: 25,
+    fontWeight: 'bold',
+    marginTop: 10,
+    color: '#000',
     alignItems: 'center',
   },
-  profilePic: {
-    width: 100,
-    height: 100,
-    borderRadius: 50,
-    marginBottom: 20,
-  },
-  inputContainer: {
-    marginBottom: 10,
-  },
-  inputTitle: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    marginBottom: 5,
-  },
-  input: {
-    height: 40,
-    borderColor: 'gray',
-    borderWidth: 1,
-    paddingHorizontal: 10,
-  },
-  datePicker: {
-    width: '100%',
-    marginTop: 5,
-    marginBottom: 10,
-    borderColor: 'gray',
-    borderWidth: 1,
-  },
-  dateInput: {
-    height: 40,
-    borderColor: 'gray',
-    borderWidth: 1,
-    paddingHorizontal: 10,
-    justifyContent: 'center',
-  },
-  dateText: {
-    fontSize: 16,
-  },
-  dropdown: {
-    height: 40,
-    borderColor: 'black',
-    borderWidth: 1,
-  },
-  flexFill: {
+  description: {
     flex: 1,
+    marginTop: 10,
+    marginLeft: 10,
+    marginRight: 10,
   },
-  buttonsContainer: {
-    marginTop: 20,
-  },
-  buttonChange: {
-    backgroundColor: 'blue',
-    padding: 10,
-    borderRadius: 5,
-    marginBottom: 10,
-  },
-  buttonSignout: {
-    backgroundColor: 'blue',
-    padding: 10,
-    borderRadius: 5,
-    marginBottom: 10,
-  },
-  buttonTextChange: {
-    color: 'white',
-    textAlign: 'center',
-    fontWeight: 'bold',
-  },
-  buttonTextChange: {
-    color: 'white',
-    textAlign: 'center',
-    fontWeight: 'bold',
-  },
-  buttonTextSignout: {
-    color: 'white',
-    textAlign: 'center',
-    fontWeight: 'bold',
-  },
+  // Rest of the styles...
 });
 
-export default Perfil;
+export default Actividade;

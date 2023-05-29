@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
-import { View, Image, TextInput, Text, StyleSheet, TouchableOpacity } from 'react-native';
-import { Picker } from '@react-native-community/picker';
+import { View, Image, TextInput, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
+import { Picker } from '@react-native-picker/picker';
 import DateTimePicker from '@react-native-community/datetimepicker';
+//import { ScrollView } from 'react-native-gesture-handler';
 
 const countries = [
-  'United States',
-  'Canada',
-  'United Kingdom',
-  'Australia',
-  'Germany',
-  // Add more countries here
+  'Portugal',
+  'Estados Unidos',
+  'Reino Unido',
+  'Austrália',
+  'Alemanha',
 ];
 
 const Perfil = () => {
@@ -48,7 +48,6 @@ const Perfil = () => {
 
   const handlePasswordChange = () => {
     // Logic for changing password
-    console.log('Change Password');
   };
 
   const handleSignOut = () => {
@@ -58,11 +57,13 @@ const Perfil = () => {
 
   return (
     <View style={styles.container}>
+      
       <Image
         source={require('./assets/background.jpg')}
         style={styles.backgroundImage}
       />
       <View style={styles.content}>
+        <ScrollView>
         <View style={styles.profileContainer}>
           <Image
             source={require('./assets/karaoke.jpg')}
@@ -70,22 +71,25 @@ const Perfil = () => {
           />
         </View>
         <InputWithTitle
-          title="First Name"
+          title="Primeiro Nome"
           value={userData.firstName}
-          onChangeText={(text) => handleInputChange('firstName', text)}
+          onChangeText={(text) => handleInputChange('Primeiro Nome', text)}
         />
         <InputWithTitle
-          title="Last Name"
+          title="Último Nome"
           value={userData.lastName}
-          onChangeText={(text) => handleInputChange('lastName', text)}
+          onChangeText={(text) => handleInputChange('Último Nome', text)}
         />
         <InputWithTitle
           title="Email"
           value={userData.email}
-          onChangeText={(text) => handleInputChange('email', text)}
+          onChangeText={(text) => handleInputChange('Email', text)}
         />
+        
+        <View style={styles.line}></View>
+        
         <View style={styles.inputContainer}>
-          <Text style={styles.inputTitle}>Birth Date</Text>
+          <Text style={styles.inputTitle}>Data de Nascimento</Text>
           <TouchableOpacity
             style={styles.dateInput}
             onPress={toggleDatePicker}
@@ -102,7 +106,7 @@ const Perfil = () => {
           )}
         </View>
         <DropdownWithTitle
-          title="Country"
+          title="País"
           value={userData.country}
           onValueChange={(value) => handleInputChange('country', value)}
         >
@@ -110,14 +114,14 @@ const Perfil = () => {
             <Picker.Item key={country} label={country} value={country} />
           ))}
         </DropdownWithTitle>
-        <DropdownWithTitle 
-          title="Gender"
+        <DropdownWithTitle
+          title="Género"
           value={userData.gender}
           onValueChange={(value) => handleInputChange('gender', value)}
         >
-          <Picker.Item label="Female" value="Female" />
-          <Picker.Item label="Male" value="Male" />
-          <Picker.Item label="Other" value="Other" />
+          <Picker.Item label="Feminino" value="Feminino" />
+          <Picker.Item label="Masculino" value="Masculino" />
+          <Picker.Item label="Outro" value="Outro" />
         </DropdownWithTitle>
         <View style={styles.buttonsContainer}>
           <TouchableOpacity style={styles.buttonChange} onPress={handlePasswordChange}>
@@ -127,7 +131,8 @@ const Perfil = () => {
             <Text style={styles.buttonTextSignout}>Sign Out</Text>
           </TouchableOpacity>
         </View>
-      </View>
+      
+      </ScrollView></View>
     </View>
   );
 };
@@ -174,8 +179,10 @@ const styles = StyleSheet.create({
   content: {
     backgroundColor: 'rgba(255, 255, 255, 0.8)',
     width: '90%',
+    height: '85%',
     paddingHorizontal: 20,
-    paddingVertical: 40,
+    paddingVertical: 10,
+    marginVertical: 30,
     borderRadius: 10,
   },
   profileContainer: {
@@ -186,9 +193,11 @@ const styles = StyleSheet.create({
     height: 100,
     borderRadius: 50,
     marginBottom: 20,
+    marginTop: 20,
   },
   inputContainer: {
     marginBottom: 10,
+
   },
   inputTitle: {
     fontSize: 16,
@@ -200,61 +209,70 @@ const styles = StyleSheet.create({
     borderColor: 'gray',
     borderWidth: 1,
     paddingHorizontal: 10,
-  },
-  datePicker: {
-    width: '100%',
-    marginTop: 5,
-    marginBottom: 10,
-    borderColor: 'gray',
-    borderWidth: 1,
+    borderRadius: 8, // Added borderRadius
   },
   dateInput: {
     height: 40,
-    borderColor: 'gray',
+    borderColor: 'black',
     borderWidth: 1,
     paddingHorizontal: 10,
     justifyContent: 'center',
+    borderRadius: 8, // Added borderRadius
   },
   dateText: {
     fontSize: 16,
   },
-  dropdown: {
-    height: 40,
-    borderColor: 'black',
-    borderWidth: 1,
-  },
   flexFill: {
     flex: 1,
+  },
+  line: {
+    borderBottomWidth: 1,
+    borderColor: 'rgba(145, 158, 171, 0.24)',
+    width: '100%',
+    alignSelf: 'center',
+    marginVertical: 20,
   },
   buttonsContainer: {
     marginTop: 20,
   },
   buttonChange: {
-    backgroundColor: 'blue',
-    padding: 10,
-    borderRadius: 5,
-    marginBottom: 10,
+    marginTop: 10,
+    borderRadius: 8,
+    borderWidth: 1,
+    borderColor: '#FFAB00',
+    width: '100%',
+    height: 50,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   buttonSignout: {
-    backgroundColor: 'blue',
-    padding: 10,
-    borderRadius: 5,
-    marginBottom: 10,
+    marginTop: 10,
+    backgroundColor: '#B71D18',
+    borderRadius: 8,
+    borderWidth: 1,
+    borderColor: '#B71D18',
+    width: '100%',
+    height: 50,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   buttonTextChange: {
-    color: 'white',
+    color: '#FFAB00',
     textAlign: 'center',
     fontWeight: 'bold',
-  },
-  buttonTextChange: {
-    color: 'white',
-    textAlign: 'center',
-    fontWeight: 'bold',
+    fontSize: 15
   },
   buttonTextSignout: {
-    color: 'white',
+    color: '#FFFFFF',
     textAlign: 'center',
     fontWeight: 'bold',
+    fontSize: 15
+  },
+  dropdown: {
+    height: 40,
+    borderColor: 'black',
+    borderWidth: 1,
+    borderRadius: 8,
   },
 });
 

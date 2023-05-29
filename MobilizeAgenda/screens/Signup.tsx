@@ -1,15 +1,10 @@
 import React, { useState } from 'react';
 import { StyleSheet, ImageBackground, View, TextInput, TouchableOpacity, Text, Image } from 'react-native';
-import { createStackNavigator } from '@react-navigation/stack';
-import { NavigationContainer } from '@react-navigation/native';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import Iocon from 'react-native-vector-icons/AntDesign';
 
 
 const image = require('./assets/background.jpg');
-const googleIcon = require('./assets/google.png');
-const facebookIcon = require('./assets/facebook.png');
-const twitterIcon = require('./assets/twitter.png');
-const appleIcon = require('./assets/apple.png');
-
 
 
 
@@ -33,7 +28,7 @@ const Signup = () => {
     <ImageBackground source={image} style={styles.background}>
       <View style={styles.overlay}>
         <View style={styles.form}>
-          <Text style={styles.credenciais}>Criar Conta</Text>
+          <Text style={styles.title}>Criar Conta</Text>
           <TextInput
             style={styles.input}
             placeholder="Nome"
@@ -66,24 +61,24 @@ const Signup = () => {
             <View style={styles.line}></View>
           </View>
           <View style={styles.socialButtonsContainer}>
-            <TouchableOpacity style={styles.socialButton}>
-              <Image source={googleIcon} style={styles.socialIcon} />
+            <TouchableOpacity>
+            <Iocon name="googleplus" size={55} color="#DB4A39" style={styles.socialIcon}  />
             </TouchableOpacity>
-            <TouchableOpacity style={styles.socialButton}>
-              <Image source={facebookIcon} style={styles.socialIcon} />
+            <TouchableOpacity>
+              <Icon name="facebook" size={55} color="#3B5998"  style={styles.socialIcon} />
             </TouchableOpacity>
-            <TouchableOpacity style={styles.socialButton}>
-              <Image source={twitterIcon} style={styles.socialIcon} />
+            <TouchableOpacity>
+              <Icon name="twitter" size={55} color="#00ACEE"  style={styles.socialIcon} />
             </TouchableOpacity>
-            <TouchableOpacity style={styles.socialButton}>
-              <Image source={appleIcon} style={styles.socialIcon} />
+            <TouchableOpacity >
+              <Icon name="apple" size={55} color="#6F6E70"  style={styles.socialIcon} />
             </TouchableOpacity>
           </View>
           <TouchableOpacity style={styles.signupButton} onPress={handleLogin}>
             <Text style={styles.signupButtonText}>Criar Conta</Text>
           </TouchableOpacity>
           <View style={styles.orContainer}>
-            <Text style={styles.orTexto}>Já tem conta? Faça Login</Text>
+            <Text style={styles.orlogin}>Já tem conta? Faça Login</Text>
           </View>
         </View>
       </View>
@@ -121,7 +116,7 @@ const styles = StyleSheet.create({
     marginVertical: 10,
     borderRadius: 8,
     borderWidth: 1,
-    borderColor: '#ccc',
+    borderColor: 'rgba(145, 158, 171, 0.32)',
   },
   signupButton: {
     marginTop: 10,
@@ -136,7 +131,7 @@ const styles = StyleSheet.create({
   },
   signupButtonText: {
     color: '#FF5630',
-    fontSize: 18,
+    fontSize: 15,
   },
   orContainer: {
     flexDirection: 'row',
@@ -145,11 +140,12 @@ const styles = StyleSheet.create({
   },
   orText: {
     marginHorizontal: 10,
-    fontSize: 16,
+    fontSize: 14,
     color: '#444',
   },
-  orTexto: {
+  orlogin: {
     marginHorizontal: 10,
+    marginTop: 20,
     fontSize: 16,
     color: '#444',
   },
@@ -158,9 +154,9 @@ const styles = StyleSheet.create({
     height: 1,
     backgroundColor: '#ccc',
   },
-  credenciais: {
+  title: {
     marginBottom: 36,
-    fontSize: 16,
+    fontSize: 24,
     color: '#444',
   },
   socialButtonsContainer: {
@@ -170,12 +166,14 @@ const styles = StyleSheet.create({
   socialButton: {
     backgroundColor: '#fff',
     borderRadius: 5,
-    padding: 10,
     marginHorizontal: 5,
+    marginBottom: 20
   },
   socialIcon: {
-    width: 30,
-    height: 30
+    width: 55,
+    height: 55,
+    marginHorizontal:10,
+    marginBottom: 20
   },
 });
 

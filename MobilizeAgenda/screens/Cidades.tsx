@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
     margin:10,
   },
   cidade: {
-    fontSize: 18,
+    fontSize: 16,
     marginVertical: 10,
     color: '#212B36'
   },

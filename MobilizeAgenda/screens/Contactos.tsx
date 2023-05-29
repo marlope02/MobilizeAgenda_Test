@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { View, Text, FlatList, StyleSheet, ScrollView, Image, TextInput } from 'react-native';
+import { View, Text, FlatList, StyleSheet, ScrollView, Image, TextInput, TouchableOpacity } from 'react-native';
+import Icon from 'react-native-vector-icons/Feather';
 
 const Contactos = () => {
   const [contacts, setContacts] = useState([
@@ -24,9 +25,31 @@ const Contactos = () => {
     contact.name.toLowerCase().includes(searchText.toLowerCase())
   );
 
+  const handleSearch = () => {
+    // Handle search logic here
+  }
+
+  const handleNavigation1 = () => {
+    // Handle navigation to page 1 here
+  }
+
+  const handleNavigation2 = () => {
+    // Handle navigation to page 2 here
+  }
+
+  const handleNavigation3 = () => {
+    // Handle navigation to page 3 here
+  }
+
+  const handleNavigation4 = () => {
+    // Handle navigation to page 4 here
+  }
+
+  const handleNavigation5 = () => {
+    // Handle navigation to page 5 here
+  }
 
 
-  
   const renderContact = ({ item }) => (
     <View style={styles.contactContainer}>
       <Image
@@ -63,16 +86,23 @@ const Contactos = () => {
         <Text style={styles.title}>Chat</Text>
         <Image
           source={require('./assets/karaoke.jpg')}
-          style={styles.profilePic}
+          style={styles.myProfilePic}
         />
       </View>
       <View style={styles.searchContainer}>
-        <TextInput
-          style={styles.searchInput}
-          placeholder="Search"
-          value={searchText}
-          onChangeText={(text) => setSearchText(text)}
-        />
+        <View style={styles.searchInputContainer}>
+          <TouchableOpacity onPress={handleSearch}>
+            <Icon name="search" color="#000" size={16} style={styles.searchIcon} />
+          </TouchableOpacity>
+          <TextInput
+            style={styles.searchInput}
+            placeholder="Search"
+            value={searchText}
+            onChangeText={(text) => setSearchText(text)}
+            onSubmitEditing={handleSearch}
+          />
+
+        </View>
       </View>
       <ScrollView>
         <View style={styles.section}>
@@ -89,6 +119,44 @@ const Contactos = () => {
           />
         </View>
       </ScrollView>
+
+      <View style={styles.navigationContainer}>
+        <TouchableOpacity onPress={handleNavigation1}>
+          <Icon
+            name="home"
+            size={33}
+            color='rgba(33, 43, 54, 0.7)'
+          />
+        </TouchableOpacity>
+        <TouchableOpacity onPress={handleNavigation2}>
+          <Icon
+            name="heart"
+            size={33}
+            color='rgba(33, 43, 54, 0.7)'
+          />
+        </TouchableOpacity>
+        <TouchableOpacity onPress={handleNavigation3}>
+          <Icon
+            name="message-circle"
+            size={33}
+            color='rgba(0, 171, 85, 0.7)'
+          />
+        </TouchableOpacity>
+        <TouchableOpacity onPress={handleNavigation4}>
+          <Icon
+            name="coffee"
+            size={33}
+            color='rgba(33, 43, 54, 0.7)'
+          />
+        </TouchableOpacity>
+        <TouchableOpacity onPress={handleNavigation5}>
+          <Icon
+            name="settings"
+            size={33}
+            color='rgba(33, 43, 54, 0.7)'
+          />
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
@@ -97,7 +165,15 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: 50,
-    paddingHorizontal: 20,
+    paddingHorizontal: 0,
+  },
+  navigationContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    backgroundColor: '#fff',
+    paddingVertical: 10,
+    paddingHorizontal: 20
   },
   header: {
     flexDirection: 'row',
@@ -109,12 +185,8 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 24,
     fontWeight: 'bold',
-  },
-  contactRightContainer: {
-    flex: 1,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'flex-end',
+    color: '#212B36',
+    marginLeft:20
   },
   profilePic: {
     width: 60,
@@ -122,12 +194,18 @@ const styles = StyleSheet.create({
     borderRadius: 30,
     marginLeft: 10,
   },
+  myProfilePic: {
+    width: 50,
+    height: 50,
+    borderRadius: 30,
+    marginRight: 20,
+  },
   line: {
     borderBottomWidth: 1,
-    borderBottomColor: '#000',
-    width: '100%',
+    borderColor: 'rgba(145, 158, 171, 0.24)',
+    width: '90%',
     alignSelf: 'center',
-    marginVertical: 15,
+    marginBottom: 15,
   },
   onlineProfilePic: {
     width: 60,
@@ -137,20 +215,22 @@ const styles = StyleSheet.create({
   },
   section: {
     marginBottom: 10,
+    marginHorizontal: 20
   },
   subtitle: {
-    fontSize: 18,
+    fontSize: 16,
     fontWeight: 'bold',
     marginBottom: 10,
+    color: '#212B36',
   },
   contactContainer: {
-    marginBottom: 10,
+    marginBottom: 15,
     flexDirection: 'row',
     alignItems: 'center',
-    borderRadius: 16,
-    borderWidth: 2,
-    borderColor: '#ccc',
-    padding: 20,
+    borderRadius: 8,
+    borderWidth: 1,
+    borderColor: 'rgba(145, 158, 171, 0.32)',
+    padding: 10,
   },
   contactInfo: {
     marginLeft: 10,
@@ -162,26 +242,17 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   contactName: {
-    fontSize: 18,
+    fontSize: 14,
     fontWeight: 'bold',
+    color: '#212B36',
   },
   lastOnline: {
-    fontSize: 16,
-    color: '#888',
+    fontSize: 12,
+    color: '#919EAB',
   },
   lastMessage: {
-    fontSize: 16,
-    color: '#888',
-  },
-  searchContainer: {
-    marginBottom: 30,
-  },
-  searchInput: {
-    height: 40,
-    borderColor: 'gray',
-    borderWidth: 1,
-    paddingHorizontal: 10,
-    borderRadius: 16,
+    fontSize: 14,
+    color: '#637381',
   },
   onlineIndicatorContainer: {
     flexDirection: 'row',
@@ -193,6 +264,32 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     backgroundColor: 'green',
     marginRight: 5,
+  },
+  searchContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 10,
+  },
+  searchInputContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    borderWidth: 1,
+    borderColor: 'rgba(145, 158, 171, 0.32)',
+    borderRadius: 8,
+    paddingHorizontal: 10,
+    alignItems: 'center',
+    alignContent: 'center',
+    marginHorizontal: 20,
+  },
+  searchIcon: {
+    marginLeft: 5,
+    color: '#919EAB',
+  },
+  searchInput: {
+    fontSize: 16,
+    color: '#919EAB',
+    marginLeft: 10,
   },
 });
 

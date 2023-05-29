@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, ScrollView, Image } from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import Icon from 'react-native-vector-icons/Feather';
+
 
 
 
@@ -45,8 +46,18 @@ const Home = () => {
 
     <View style={styles.container}>
 
-
+      < View style={styles.header}>
+        <Text style={styles.title}>Eventos</Text>
+        <Image
+          source={require('./assets/karaoke.jpg')}
+          style={styles.myProfilePic}
+        />
+      </View>
       <View style={styles.searchContainer}>
+      <View style={styles.searchInputContainer}>
+      <TouchableOpacity onPress={handleSearch}>
+          <Icon name="search" color="rgba(145, 158, 171, 0.32)" size={24} />
+        </TouchableOpacity>
         <TextInput
           style={styles.searchInput}
           placeholder="Search"
@@ -54,12 +65,10 @@ const Home = () => {
           onChangeText={handleSearchTextChange}
           onSubmitEditing={handleSearch}
         />
-        <TouchableOpacity onPress={handleSearch}>
-          <Icon name='search' color='#000' />
-        </TouchableOpacity>
+        </View>
       </View>
 
-      
+
       <View style={styles.horizontalScroll}>
         <ScrollView horizontal={true}>
           <TouchableOpacity style={styles.horizontalScrollItem}>
@@ -241,41 +250,41 @@ const Home = () => {
         </View>
       </ScrollView>
       <View style={styles.navigationContainer}>
-        <Icon
-          name="home"
-          type="font-awesome"
-          onPress={handleNavigation1}
-          size={24}
-          color="black"
-        />
-        <Icon
-          name="heart"
-          type="font-awesome"
-          onPress={handleNavigation2}
-          size={24}
-          color="black"
-        />
-        <Icon
-          name="comments"
-          type="font-awesome"
-          onPress={handleNavigation3}
-          size={24}
-          color="black"
-        />
-        <Icon
-          name="coffee"
-          type="font-awesome"
-          onPress={handleNavigation4}
-          size={24}
-          color="black"
-        />
-        <Icon
-          name="cog"
-          type="font-awesome"
-          onPress={handleNavigation5}
-          size={24}
-          color="black"
-        />
+        <TouchableOpacity onPress={handleNavigation1}>
+          <Icon
+            name="home"
+            size={33}
+            color='rgba(51, 102, 255, 0.7)'
+          />
+        </TouchableOpacity>
+        <TouchableOpacity onPress={handleNavigation2}>
+          <Icon
+            name="heart"
+            size={33}
+            color='rgba(33, 43, 54, 0.7)'
+          />
+        </TouchableOpacity>
+        <TouchableOpacity onPress={handleNavigation3}>
+          <Icon
+            name="message-circle"
+            size={33}
+            color='rgba(33, 43, 54, 0.7)'
+          />
+        </TouchableOpacity>
+        <TouchableOpacity onPress={handleNavigation4}>
+          <Icon
+            name="coffee"
+            size={33}
+            color='rgba(33, 43, 54, 0.7)'
+          />
+        </TouchableOpacity>
+        <TouchableOpacity onPress={handleNavigation5}>
+          <Icon
+            name="settings"
+            size={33}
+            color='rgba(33, 43, 54, 0.7)'
+          />
+        </TouchableOpacity>
       </View>
     </View>
 
@@ -295,14 +304,24 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     padding: 10,
     backgroundColor: '#fff',
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    elevation: 5,
+  },
+  header: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 20,
+    marginTop: 10,
+    justifyContent: 'space-between',
+  },
+  searchInputContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    borderWidth: 1,
+    borderColor: 'rgba(145, 158, 171, 0.32)',
+    borderRadius: 8,
+    paddingHorizontal: 10,
+    alignItems: 'center',
+    alignContent: 'center',
+    marginHorizontal: 20,
   },
   horizontalScroll: {
     height: 20,
@@ -321,24 +340,14 @@ const styles = StyleSheet.create({
   },
   line: {
     borderBottomWidth: 1,
-    borderBottomColor: '#000',
+    borderColor: 'rgba(145, 158, 171, 0.24)',
     width: '90%',
     alignSelf: 'center',
   },
   searchInput: {
-    flex: 1,
-    height: 40,
-    borderWidth: 1,
-    borderColor: '#ccc',
-    borderRadius: 5,
-    paddingHorizontal: 10,
-    marginRight: 10,
-  },
-  searchButton: {
-    paddingVertical: 10,
-    paddingHorizontal: 20,
-    backgroundColor: '#008080',
-    borderRadius: 5,
+    fontSize: 16,
+    color: '#919EAB',
+    marginLeft: 10,
   },
   searchButtonText: {
     color: '#fff',
@@ -356,10 +365,22 @@ const styles = StyleSheet.create({
     color: '#444',
     fontWeight: 'bold',
   },
+  title: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: '#212B36',
+    marginLeft: 20
+  },
+  myProfilePic: {
+    width: 50,
+    height: 50,
+    borderRadius: 30,
+    marginRight: 20,
+  },
   scrollVertical: {
     flex: 1,
     paddingHorizontal: 10,
-    marginBottom: 10,
+    marginTop: 10,
   },
   squareContainer: {
     flexDirection: 'row',
@@ -415,60 +436,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    backgroundColor: '#eee',
-    padding: 10,
-  },
-  navigationButton1: {
+    backgroundColor: '#fff',
     paddingVertical: 10,
-    paddingHorizontal: 20,
-    backgroundColor: '#008080',
-    borderRadius: 8,
+    paddingHorizontal: 20
   },
-  navigationButtonText1: {
-    color: '#fff',
-    fontWeight: 'bold',
-  },
-  navigationButton2: {
-    paddingVertical: 10,
-    paddingHorizontal: 20,
-    backgroundColor: '#008080',
-    borderRadius: 8,
-  },
-  navigationButtonText2: {
-    color: '#fff',
-    fontWeight: 'bold',
-  },
-  navigationButton3: {
-    paddingVertical: 10,
-    paddingHorizontal: 20,
-    backgroundColor: '#008080',
-    borderRadius: 8,
-  },
-  navigationButtonText3: {
-    color: '#fff',
-    fontWeight: 'bold',
-  },
-  navigationButton4: {
-    paddingVertical: 10,
-    paddingHorizontal: 20,
-    backgroundColor: '#008080',
-    borderRadius: 8,
-  },
-  navigationButtonText4: {
-    color: '#fff',
-    fontWeight: 'bold',
-  },
-  navigationButton5: {
-    paddingVertical: 10,
-    paddingHorizontal: 20,
-    backgroundColor: '#008080',
-    borderRadius: 8,
-  },
-  navigationButtonText5: {
-    color: '#fff',
-    fontWeight: 'bold',
-  },
-
 });
 
 export default Home;

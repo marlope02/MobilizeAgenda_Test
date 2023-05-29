@@ -1,5 +1,6 @@
 import React from 'react';
-import { StyleSheet, View, Image, Dimensions, Text, ScrollView, ImageBackground, Button } from 'react-native';
+import { StyleSheet, View, Image, Dimensions, Text, ScrollView, ImageBackground } from 'react-native';
+import AntDesignIcon from 'react-native-vector-icons/AntDesign';
 
 const { width } = Dimensions.get('window');
 
@@ -12,17 +13,11 @@ const handleBack = () => {
 const Actividade = () => {
   return (
     <View style={styles.container}>
-      <ImageBackground style={styles.image} source={require('./assets/karaoke.jpg')} >
-        <View>
-        <Button
-        title="Press me"
-        color="#f194ff"
-        onPress={handleBack}
-      />
+      <ImageBackground style={styles.image} source={require('./assets/karaoke.jpg')}>
+        <View style={styles.buttonContainer}>
+        <AntDesignIcon name="leftcircleo" size={30} color="white" onPress={handleBack}/>
         </View>
       </ImageBackground>
-
-
 
       <Text style={styles.title}>Noite de Karaoke</Text>
 
@@ -40,11 +35,8 @@ const Actividade = () => {
           <Text style={[styles.text, { maxWidth: '70%' }]}>21:00 até às 00:00</Text>
         </View>
         <View style={styles.column}>
-
           <Text style={styles.subtitle}>Descrição:</Text>
-
-          <Text style={styles.text}>Descrição Descrição Descrição Descr Descrição Descrição Descrição Descr Descrição Descrição Descrição Descr Descrição Descrição Descrição Descr Descrição Descrição Descrição Descr Descrição Descrição Descrição Descr Descrição Descrição Descrição Descr Descrição Descrição Descrição Descr Descrição Descrição Descrição Descr Descrição Descrição Descrição Descr Descrição Descrição Descrição Descr Descrição Descrição Descrição Descr Descrição Descrição Descrição Descr Descrição Descrição Descrição Descr Descrição Descrição Descrição Descr Descrição Descrição Descrição Descr Descrição Descrição Descrição Descr Descrição Descrição Descrição Descr Descrição Descrição Descrição Descr Descrição Descrição Descrição Descr </Text>
-
+          <Text style={styles.text}>Descrição Descrição Descrição Descr Descrição Descrição Descrição Descr Descrição Descrição Descrição Descr Descrição Descrição Descrição Descr Descrição Descrição Descrição Descr Descrição Descrição Descrição Descr Descrição Descrição Descrição Descr Descrição Descrição Descrição Descr Descrição Descrição Descrição Descr Descrição Descrição Descrição Descr Descrição Descrição Descrição Descr Descrição Descrição Descrição Descr Descrição Descrição Descrição Descr Descrição Descrição Descrição Descr Descrição Descrição Descrição Descr Descrição Descrição Descrição Descr Descrição Descrição Descrição Descr Descrição Descrição Descrição Descr Descrição Descrição Descrição Descr Descrição Descrição Descrição Descr</Text>
         </View>
       </ScrollView>
     </View>
@@ -61,11 +53,17 @@ const styles = StyleSheet.create({
     width: '100%',
     height: imageHeight,
   },
+  buttonContainer: {
+    position: 'absolute',
+    top: 20,
+    left: 10,
+    zIndex: 1,
+  },
   title: {
-    fontSize: 25,
+    fontSize: 24,
     fontWeight: 'bold',
     marginTop: 10,
-    color: '#000',
+    color: '#212B36',
     alignItems: 'center',
   },
   row: {
@@ -79,7 +77,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     paddingHorizontal: 10,
     marginVertical: 10,
-    alignItems: 'flex-start'
+    alignItems: 'flex-start',
   },
   description: {
     flex: 1,
@@ -91,17 +89,16 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
     marginTop: 10,
-    color: '#000',
+    color: '#212B36',
     textAlign: 'right',
   },
   text: {
     fontSize: 18,
     marginTop: 10,
     marginLeft: 2,
-    color: '#000',
+    color: '#212B36',
     alignItems: 'center',
   },
 });
-
 
 export default Actividade;
