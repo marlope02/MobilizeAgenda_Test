@@ -155,9 +155,10 @@ const styles = StyleSheet.create({
     backgroundColor: '#ccc',
   },
   title: {
-    marginBottom: 36,
+    marginBottom: 20,
     fontSize: 24,
     color: '#444',
+    fontWeight: 'bold',
   },
   socialButtonsContainer: {
     flexDirection: 'row',

@@ -8,7 +8,7 @@ interface SigninScreenProps {
   navigation: any;
 }
 
-
+const image = require('./assets/background.jpg');
 
 
 
@@ -31,7 +31,7 @@ const Signin = (props: SigninScreenProps) => {
   return (
     
         
-    <ImageBackground source={require('./assets/background.jpg')} style={styles.background}>
+    <ImageBackground source={image} style={styles.background}>
       <View style={styles.overlay}>
         <View style={styles.form}>
           <Text style={styles.mobilize}>MobilizeAgenda</Text>

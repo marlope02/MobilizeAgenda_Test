@@ -1,5 +1,7 @@
 import React from 'react';
-import { View, Text, StyleSheet, ScrollView } from 'react-native';
+import { View, Text, ScrollView, StyleSheet, TouchableOpacity } from 'react-native';
+import AntDesignIcon from 'react-native-vector-icons/AntDesign';
+import MaterialCommunityIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const Idiomas = () => {
   const idiomas = [
@@ -27,54 +29,54 @@ const Idiomas = () => {
     'Francês',
     'Italiano',
     'Alemão',
+
   ];
+  
+  const handleBack = () => {
+
+  }
 
   return (
-    <View style={styles.container}>
+    <ScrollView contentContainerStyle={styles.container}>
+      <TouchableOpacity>
+      <AntDesignIcon name="leftcircleo" size={30} color="#161C34" onPress={handleBack} />
+      </TouchableOpacity>
       <Text style={styles.title}>Idiomas</Text>
-      <ScrollView contentContainerStyle={{ width:'100%', alignItems: 'center', justifyContent: 'space-around' }}>
-        {idiomas.map((idioma, index) => (
-          <View key={index}>
-            {index === 0 ? null : <View style={styles.line} />}
+      {idiomas.map((idioma, index) => (
+        <View key={index}>
+          <View style={styles.idiomaContainer}>
             <Text style={styles.idioma}>{idioma}</Text>
           </View>
-        ))}
-      </ScrollView>
-    </View>
+          {index !== idiomas.length - 1 && <View style={styles.separator} />}
+        </View>
+      ))}
+    </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    height: '100%',
-    width:'100%',
+    padding: 16,
   },
   title: {
     fontSize: 24,
     fontWeight: 'bold',
-    marginVertical: 20,
+    marginBottom: 55,
+    alignSelf: 'center',
     color: '#212B36'
   },
-  space: {
-    margin: 10,
+  separator: {
+    height: 1,
+    backgroundColor: 'rgba(145, 158, 171, 0.24)',
+    marginVertical: 8,
+  },
+  idiomaContainer: {
+    alignItems: 'center',
   },
   idioma: {
-    fontSize: 18,
-    marginVertical: 10,
-    color: '#212B36'
-  },
-
-  line: {
-    borderBottomWidth: 1,
-    backgroundColor: '#919EAB',
-    alignSelf: 'center',
-    position: 'absolute',
-    left: 0,
-    right: 0,
-  },
+    fontSize: 16,
+    marginBottom: 4,
+    color: '#212B36'},
 });
 
 export default Idiomas;

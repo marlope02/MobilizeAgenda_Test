@@ -3,11 +3,7 @@ import { View, Text, TextInput, TouchableOpacity, StyleSheet, ScrollView, Image,
 import Icon from 'react-native-vector-icons/AntDesign';
 import Iocon from 'react-native-vector-icons/Feather';
 
-
-
-
 const Settings = () => {
-
   const handleNavigation1 = () => {
     // Handle navigation to page 1 here
   }
@@ -37,120 +33,98 @@ const Settings = () => {
   }
 
   const [darkThemeEnabled, setDarkThemeEnabled] = useState(false);
-
   const [vibrationEnabled, setVibrationEnabled] = useState(false);
-
-
   const ImgPerfil = require('./assets/karaoke.jpg');
 
-
-
   return (
-
     <View style={styles.container}>
-      <View style={styles.row}>
-        <Text style={styles.title}>Definições</Text>
-        <View style={styles.imageProfileContainer}>
-          <Image source={ImgPerfil} style={styles.imageProfile} />
+      <View style={styles.content}>
+        <View style={styles.row}>
+          <Text style={styles.title}>Definições</Text>
+          <View style={styles.imageProfileContainer}>
+            <Image source={ImgPerfil} style={styles.imageProfile} />
+          </View>
+        </View>
+
+        <View style={styles.space} />
+
+        <TouchableOpacity style={styles.button} onPress={handleCidade}>
+          <Text style={styles.subtitle}>Cidade</Text>
+          <Text style={[styles.description, styles.descriptionRight]}>Maia</Text>
+          <Icon name="right" size={24} color="#212B36" />
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.button} onPress={handleIdioma}>
+          <Text style={styles.subtitle}>Idioma</Text>
+          <Text style={[styles.description, styles.descriptionRight]}>Português</Text>
+          <Icon name="right" size={24} color="#212B36" />
+        </TouchableOpacity>
+
+        <View style={styles.button}>
+          <Text style={styles.subtitle}>Tema Escuro</Text>
+          <Switch
+            style={styles.switch}
+            trackColor={{ false: '#871D18', true: '#007B55' }}
+            thumbColor={darkThemeEnabled ? '#ffffff' : '#ffffff'}
+            onValueChange={value => setDarkThemeEnabled(value)}
+            value={darkThemeEnabled}
+          />
+        </View>
+
+        <View style={styles.button}>
+          <Text style={styles.subtitle}>Vibração</Text>
+          <Switch
+            style={styles.switch}
+            trackColor={{ false: '#871D18', true: '#007B55' }}
+            thumbColor={vibrationEnabled ? '#ffffff' : '#fffffff'}
+            onValueChange={value => setVibrationEnabled(value)}
+            value={vibrationEnabled}
+          />
+        </View>
+
+        <View style={styles.button}>
+          <Text style={styles.subtitle}>Privacidade</Text>
         </View>
       </View>
 
-      <View style={styles.space} />
-
-      <TouchableOpacity style={styles.button} onPress={handleCidade}>
-        <Text style={styles.subtitle}>Cidade</Text>
-        <Text style={[styles.description, styles.descriptionRight]}>Maia</Text>
-        <Icon name="right" size={24} color="#212B36" />
-      </TouchableOpacity>
-
-      <TouchableOpacity style={styles.button} onPress={handleIdioma}>
-        <Text style={styles.subtitle}>Idioma</Text>
-        <Text style={[styles.description, styles.descriptionRight]}>Português</Text>
-        <Icon name="right" size={24} color="#212B36" />
-      </TouchableOpacity>
-
-      <View style={styles.button}>
-        <Text style={styles.subtitle}>Tema Escuro</Text>
-        <Switch
-          style={styles.switch}
-          trackColor={{ false: '#871D18', true: '#007B55' }}
-          thumbColor={darkThemeEnabled ? '#ffffff' : '#ffffff'}
-          onValueChange={value => setDarkThemeEnabled(value)}
-          value={darkThemeEnabled}
-        />
-      </View>
-
-      <View style={styles.button}>
-        <Text style={styles.subtitle}>Vibração</Text>
-        <Switch
-          style={styles.switch}
-          trackColor={{ false: '#871D18', true: '#007B55' }}
-          thumbColor={vibrationEnabled ? '#ffffff' : '#fffffff'}
-          onValueChange={value => setVibrationEnabled(value)}
-          value={vibrationEnabled}
-        />
-      </View>
-
-      <View style={styles.button}>
-        <Text style={styles.subtitle}>Privacidade</Text>
-      </View>
-
-
       <View style={styles.navigationContainer}>
         <TouchableOpacity onPress={handleNavigation1}>
-          <Iocon
-            name="home"
-            size={33}
-            color='rgba(33, 43, 54, 0.7)'
-          />
+          <Iocon name="home" size={33} color='rgba(33, 43, 54, 0.7)' />
         </TouchableOpacity>
         <TouchableOpacity onPress={handleNavigation2}>
-          <Iocon
-            name="heart"
-            size={33}
-            color='rgba(33, 43, 54, 0.7)'
-          />
+          <Iocon name="heart" size={33} color='rgba(33, 43, 54, 0.7)' />
         </TouchableOpacity>
         <TouchableOpacity onPress={handleNavigation3}>
-          <Iocon
-            name="message-circle"
-            size={33}
-            color='rgba(33, 43, 54, 0.7)'
-          />
+          <Iocon name="message-circle" size={33} color='rgba(33, 43, 54, 0.7)' />
         </TouchableOpacity>
         <TouchableOpacity onPress={handleNavigation4}>
-          <Iocon
-            name="coffee"
-            size={33}
-            color='rgba(33, 43, 54, 0.7)'
-          />
+          <Iocon name="coffee" size={33} color='rgba(33, 43, 54, 0.7)' />
         </TouchableOpacity>
         <TouchableOpacity onPress={handleNavigation5}>
-          <Iocon
-            name="settings"
-            size={33}
-            color='rgba(255, 171, 0, 0.7)'
-          />
+          <Iocon name="settings" size={33} color='rgba(255, 171, 0, 0.7)' />
         </TouchableOpacity>
       </View>
     </View>
-
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingHorizontal: 20,
     paddingTop: 20,
+  },
+  content: {
+    flex: 1,
   },
   navigationContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#fff',
     paddingVertical: 10,
-    paddingHorizontal: 20
+    paddingHorizontal: 20,
+    borderTopWidth: 1,
+    borderColor: '#D9D9D9',
   },
   switch: {
     transform: [{ scaleX: 1.5 }, { scaleY: 1.5 }],
@@ -159,6 +133,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+    marginHorizontal: 20,
   },
   space: {
     margin: 20,
@@ -191,6 +166,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     borderWidth: 1,
     marginTop: 15,
+    marginHorizontal: 20,
   },
   subtitle: {
     fontSize: 20,
@@ -206,70 +182,7 @@ const styles = StyleSheet.create({
   descriptionRight: {
     flex: 1,
     textAlign: 'right',
-
-  },
-  navigationContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    padding: 10,
-    backgroundColor: '#f2f2f2',
-    position: 'absolute',
-    bottom: 0,
-    left: 0,
-    right: 0,
-  },
-  navigationButton1: {
-    paddingVertical: 10,
-    paddingHorizontal: 20,
-    backgroundColor: '#008080',
-    borderRadius: 8,
-  },
-  navigationButtonText1: {
-    color: '#fff',
-    fontWeight: 'bold',
-  },
-  navigationButton2: {
-    paddingVertical: 10,
-    paddingHorizontal: 20,
-    backgroundColor: '#008080',
-    borderRadius: 8,
-  },
-  navigationButtonText2: {
-    color: '#fff',
-    fontWeight: 'bold',
-  },
-  navigationButton3: {
-    paddingVertical: 10,
-    paddingHorizontal: 20,
-    backgroundColor: '#008080',
-    borderRadius: 8,
-  },
-  navigationButtonText3: {
-    color: '#fff',
-    fontWeight: 'bold',
-  },
-  navigationButton4: {
-    paddingVertical: 10,
-    paddingHorizontal: 20,
-    backgroundColor: '#008080',
-    borderRadius: 8,
-  },
-  navigationButtonText4: {
-    color: '#fff',
-    fontWeight: 'bold',
-  },
-  navigationButton5: {
-    paddingVertical: 10,
-    paddingHorizontal: 20,
-    backgroundColor: '#008080',
-    borderRadius: 8,
-  },
-  navigationButtonText5: {
-    color: '#fff',
-    fontWeight: 'bold',
   },
 });
-
 
 export default Settings;

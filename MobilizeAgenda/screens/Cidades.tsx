@@ -1,5 +1,7 @@
 import React from 'react';
-import { View, Text, StyleSheet, ScrollView } from 'react-native';
+import { View, Text, ScrollView, StyleSheet, TouchableOpacity } from 'react-native';
+import AntDesignIcon from 'react-native-vector-icons/AntDesign';
+import MaterialCommunityIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const Cidades = () => {
   const cidades = [
@@ -33,59 +35,54 @@ const Cidades = () => {
     'Caldas da Rainha',
     'Chaves',
     'Covilhã',
+
   ];
+  
+  const handleBack = () => {
+
+  }
 
   return (
-    <View style={styles.container}>
+    <ScrollView contentContainerStyle={styles.container}>
+      <TouchableOpacity>
+      <AntDesignIcon name="leftcircleo" size={30} color="#161C34" onPress={handleBack} />
+      </TouchableOpacity>
       <Text style={styles.title}>Cidades</Text>
-      <ScrollView contentContainerStyle={{ alignItems: 'center', justifyContent: 'center' }}>
-        {cidades.map((cidade, index) => (
-          <View key={index}>
-            {index === 0 ? null : <View style={styles.line} />}
+      {cidades.map((cidade, index) => (
+        <View key={index}>
+          <View style={styles.cidadeContainer}>
             <Text style={styles.cidade}>{cidade}</Text>
           </View>
-        ))}
-      </ScrollView>
-    </View>
+          {index !== cidades.length - 1 && <View style={styles.separator} />}
+        </View>
+      ))}
+    </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: '100%',
-    height: '100%',
+    padding: 16,
   },
   title: {
     fontSize: 24,
     fontWeight: 'bold',
-    marginVertical: 20,
-    color: '#212B36'
-  },
-  space:{
-    margin:10,
-  },
-  cidade: {
-    fontSize: 16,
-    marginVertical: 10,
+    marginBottom: 55,
+    alignSelf: 'center',
     color: '#212B36'
   },
   separator: {
-    borderBottomWidth: 1,
-    borderBottomColor: '#000',
-    width: '90%',
-    alignSelf: 'center',
-  },
-  
-  line: {
-    borderBottomWidth: 1,
-    backgroundColor: '#919EAB',
-    width: '100%',
-    alignSelf: 'center',
-    position: 'absolute',
     height: 1,
+    backgroundColor: 'rgba(145, 158, 171, 0.24)',
+    marginVertical: 8,
+  },
+  cidadeContainer: {
+    alignItems: 'center',
+  },
+  cidade: {
+    fontSize: 16,
+    marginBottom: 4,
+    color: '#212B36'
   },
 });
 
