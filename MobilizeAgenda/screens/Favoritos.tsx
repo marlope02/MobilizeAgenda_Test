@@ -2,55 +2,93 @@ import React, { useState } from 'react';
 import { View, ScrollView, StyleSheet, TouchableOpacity, Image, Text, TextInput } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 
-const cardData = [
-  {
-    id: 1,
-    image: require('./assets/karaoke.jpg'),
-    title: 'Noite de karaoke',
-    place: 'Café Onófrio',
-    time: '22h-23h',
-  },
-  {
-    id: 2,
-    image: require('./assets/basket.jpg'),
-    title: 'Jogo Basketball',
-    place: 'Pavilhão da Trofa',
-    time: '22h-23h',
-  },
-  {
-    id: 3,
-    image: require('./assets/teatro.jpg'),
-    title: 'Teatro',
-    place: 'Tivoli',
-    time: '22h-23h',
-  },
-  {
-    id: 4,
-    image: require('./assets/karaoke.jpg'),
-    title: 'Noite de karaoke',
-    place: 'Café Onófrio',
-    time: '22h-23h',
-  },
-  {
-    id: 5,
-    image: require('./assets/basket.jpg'),
-    title: 'Jogo Basketball',
-    place: 'Pavilhão da Trofa',
-    time: '22h-23h',
-  },
-  {
-    id: 6,
-    image: require('./assets/teatro.jpg'),
-    title: 'Teatro',
-    place: 'Tivoli',
-    time: '22h-23h',
-  },
-  // Add more cards as needed
-];
-
-const CardScrollPage = () => {
 
 
+
+interface FavoritosScreenProps {
+  navigation: any;
+}
+
+
+
+const Favoritos = (props: FavoritosScreenProps) => {
+
+
+  const cardData = [
+    {
+      id: 1,
+      image: require('../assets/karaoke.jpg'),
+      title: 'Noite de karaoke',
+      place: 'Café Onófrio',
+      time: '22h-23h',
+      //onPress: props.navigation.navigate("Activity")
+      //onclick: props.navigation.navigate("Activity"),
+    },
+    {
+      id: 2,
+      image: require('../assets/basket.jpg'),
+      title: 'Jogo Basketball',
+      place: 'Pavilhão da Trofa',
+      time: '22h-23h',
+    },
+    {
+      id: 3,
+      image: require('../assets/teatro.jpg'),
+      title: 'Teatro',
+      place: 'Tivoli',
+      time: '22h-23h',
+    },
+    {
+      id: 4,
+      image: require('../assets/karaoke.jpg'),
+      title: 'Noite de karaoke',
+      place: 'Café Onófrio',
+      time: '22h-23h',
+    },
+    {
+      id: 5,
+      image: require('../assets/basket.jpg'),
+      title: 'Jogo Basketball',
+      place: 'Pavilhão da Trofa',
+      time: '22h-23h',
+      
+    },
+    {
+      id: 6,
+      image: require('../assets/teatro.jpg'),
+      title: 'Teatro',
+      place: 'Tivoli',
+      time: '22h-23h',
+    },
+  ];
+
+
+
+  const handleCardPress = (cardId) => {
+    switch (cardId) {
+      case 1:
+        props.navigation.navigate('Activity'); 
+        break;
+      case 2:
+        props.navigation.navigate('Activity'); 
+        break;
+      case 3:
+        props.navigation.navigate('Activity'); 
+      break;
+      case 4:
+        props.navigation.navigate('Activity'); 
+      break;
+      case 5:
+        props.navigation.navigate('Activity'); 
+      break;
+      case 6:
+        props.navigation.navigate('Activity'); 
+      break;
+
+      default:
+        break;
+    }
+  };
 
   const [searchText, setSearchText] = useState('');
 
@@ -63,15 +101,15 @@ const CardScrollPage = () => {
   }
 
   const handleNavigation1 = () => {
-    // Handle navigation to page 1 here
+    props.navigation.navigate("Home")
   }
 
   const handleNavigation2 = () => {
-    // Handle navigation to page 2 here
+    props.navigation.navigate("Favoritos")
   }
 
   const handleNavigation3 = () => {
-    // Handle navigation to page 3 here
+    props.navigation.navigate("Contactos")
   }
 
   const handleNavigation4 = () => {
@@ -79,9 +117,8 @@ const CardScrollPage = () => {
   }
 
   const handleNavigation5 = () => {
-    // Handle navigation to page 5 here
+    props.navigation.navigate("Settings")
   }
-
 
 
   return (
@@ -89,7 +126,7 @@ const CardScrollPage = () => {
       < View style={styles.header}>
         <Text style={styles.title}>Favoritos</Text>
         <Image
-          source={require('./assets/karaoke.jpg')}
+          source={require('../assets/karaoke.jpg')}
           style={styles.myProfilePic}
         />
       </View>
@@ -109,7 +146,7 @@ const CardScrollPage = () => {
       </View>
       <ScrollView contentContainerStyle={styles.scrollViewContent}>
         {cardData.map((card) => (
-          <View style={styles.card} key={card.id}>
+          <TouchableOpacity style={styles.card} key={card.id} onPress={() => handleCardPress(card.id)}>
             <Image source={card.image} style={styles.image} />
             <View style={styles.descriptionContainer}>
               <Text style={styles.titleDescription}>{card.title}</Text>
@@ -118,7 +155,7 @@ const CardScrollPage = () => {
                 <Text style={styles.time}>{card.time}</Text>
               </View>
             </View>
-          </View>
+          </TouchableOpacity>
         ))}
       </ScrollView>
       <View style={styles.navigationContainer}>
@@ -281,4 +318,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CardScrollPage;
+export default Favoritos;

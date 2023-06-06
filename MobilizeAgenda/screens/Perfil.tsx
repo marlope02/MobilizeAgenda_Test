@@ -59,14 +59,14 @@ const Perfil = () => {
     <View style={styles.container}>
       
       <Image
-        source={require('./assets/background.jpg')}
+        source={require('../assets/background.jpg')}
         style={styles.backgroundImage}
       />
       <View style={styles.content}>
         <ScrollView>
         <View style={styles.profileContainer}>
           <Image
-            source={require('./assets/karaoke.jpg')}
+            source={require('../assets/karaoke.jpg')}
             style={styles.profilePic}
           />
         </View>

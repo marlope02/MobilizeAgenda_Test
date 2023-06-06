@@ -34,7 +34,7 @@ const Settings = () => {
 
   const [darkThemeEnabled, setDarkThemeEnabled] = useState(false);
   const [vibrationEnabled, setVibrationEnabled] = useState(false);
-  const ImgPerfil = require('./assets/karaoke.jpg');
+  const ImgPerfil = require('../assets/karaoke.jpg');
 
   return (
     <View style={styles.container}>

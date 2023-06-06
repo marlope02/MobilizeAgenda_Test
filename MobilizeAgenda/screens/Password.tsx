@@ -26,7 +26,7 @@ const ChangePasswordPage = () => {
   return (
     <View style={styles.container}>
       <Image
-        source={require('./assets/background.jpg')}
+        source={require('../assets/background.jpg')}
         style={styles.backgroundImage}
       />
       <View style={styles.content}>

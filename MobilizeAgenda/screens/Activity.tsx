@@ -6,14 +6,23 @@ const { width } = Dimensions.get('window');
 
 const imageHeight = width / 2;
 
-const handleBack = () => {
-  // Handle navigation to page 5 here
+interface ActivityScreenProps {
+  navigation: any;
 }
 
-const Actividade = () => {
+
+
+const Actividade = (props: ActivityScreenProps) => {
+
+  const handleBack = () => {
+    props.navigation.navigate("Home")
+  }
+
+
+
   return (
     <View style={styles.container}>
-      <ImageBackground style={styles.image} source={require('./assets/karaoke.jpg')}>
+      <ImageBackground style={styles.image} source={require('../assets/karaoke.jpg')}>
         <View style={styles.buttonContainer}>
         <AntDesignIcon name="leftcircleo" size={30} color="white" onPress={handleBack}/>
         </View>

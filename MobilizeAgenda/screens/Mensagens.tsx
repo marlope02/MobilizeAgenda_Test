@@ -29,7 +29,7 @@ const Mensagens = () => {
         styles.messageContainer,
         isSentMessage ? styles.sentMessageContainer : styles.receivedMessageContainer,
       ]}>
-        <Image style={styles.profilePic} source={require('./assets/karaoke.jpg')} />
+        <Image style={styles.profilePic} source={require('../assets/karaoke.jpg')} />
         <View style={styles.messageContent}>
           <Text style={styles.messageText}>{item.text}</Text>
           <Text style={styles.timestampText}>{item.timestamp.toLocaleString()}</Text>
@@ -44,7 +44,7 @@ const Mensagens = () => {
         <AntDesignIcon name="leftcircleo" size={30} color="#161C34" onPress={handleBack} />
       </View>
       <View style={styles.header}>
-        <Image style={styles.profilePic} source={require('./assets/background.jpg')} />
+        <Image style={styles.profilePic} source={require('../assets/background.jpg')} />
         <View>
           <Text style={styles.recipientName}>John Doe</Text>
           {recipientOnline && <Text style={styles.onlineText}>Online now</Text>}

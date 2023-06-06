@@ -2,20 +2,25 @@ import React, { useState } from 'react';
 import { View, Text, FlatList, StyleSheet, ScrollView, Image, TextInput, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 
-const Contactos = () => {
+interface ContactosScreenProps {
+  navigation: any;
+}
+
+
+const Contactos = (props: ContactosScreenProps) => {
   const [contacts, setContacts] = useState([
-    { id: 1, name: 'John Doe', online: true, profilepicture: require('./assets/karaoke.jpg'), lastMessage: 'Hello there!', lastOnline: '1 hour ago' },
-    { id: 2, name: 'Jane Smith', online: false, profilepicture: require('./assets/basket.jpg'), lastMessage: 'Hello there!', lastOnline: '1 hour ago' },
-    { id: 3, name: 'Alice Johnson', online: true, profilepicture: require('./assets/background.jpg'), lastMessage: 'Hello there!', lastOnline: '1 hour ago' },
-    { id: 4, name: 'John Doe', online: true, profilepicture: require('./assets/karaoke.jpg'), lastMessage: 'Hello there!', lastOnline: '1 hour ago' },
-    { id: 5, name: 'Jane Smith', online: false, profilepicture: require('./assets/basket.jpg'), lastMessage: 'Hello there!', lastOnline: '1 hour ago' },
-    { id: 6, name: 'Alice Johnson', online: true, profilepicture: require('./assets/basket.jpg'), lastMessage: 'Hello there!', lastOnline: '1 hour ago' },
-    { id: 7, name: 'John Doe', online: true, profilepicture: require('./assets/karaoke.jpg'), lastMessage: 'Hello there!', lastOnline: '1 hour ago' },
-    { id: 8, name: 'Jane Smith', online: false, profilepicture: require('./assets/basket.jpg'), lastMessage: 'Hello there!', lastOnline: '1 hour ago' },
-    { id: 9, name: 'Alice Johnson', online: true, profilepicture: require('./assets/background.jpg'), lastMessage: 'Hello there!', lastOnline: '1 hour ago' },
-    { id: 10, name: 'John Doe', online: true, profilepicture: require('./assets/karaoke.jpg'), lastMessage: 'Hello there!', lastOnline: '1 hour ago' },
-    { id: 11, name: 'Jane Smith', online: false, profilepicture: require('./assets/basket.jpg'), lastMessage: 'Hello there!', lastOnline: '1 hour ago' },
-    { id: 12, name: 'Alice Johnson', online: true, profilepicture: require('./assets/background.jpg'), lastMessage: 'Hello there!', lastOnline: '1 hour ago' },
+    { id: 1, name: 'John Doe', online: true, profilepicture: require('../assets/karaoke.jpg'), lastMessage: 'Hello there!', lastOnline: '1 hour ago' },
+    { id: 2, name: 'Jane Smith', online: false, profilepicture: require('../assets/basket.jpg'), lastMessage: 'Hello there!', lastOnline: '1 hour ago' },
+    { id: 3, name: 'Alice Johnson', online: true, profilepicture: require('../assets/background.jpg'), lastMessage: 'Hello there!', lastOnline: '1 hour ago' },
+    { id: 4, name: 'John Doe', online: true, profilepicture: require('../assets/karaoke.jpg'), lastMessage: 'Hello there!', lastOnline: '1 hour ago' },
+    { id: 5, name: 'Jane Smith', online: false, profilepicture: require('../assets/basket.jpg'), lastMessage: 'Hello there!', lastOnline: '1 hour ago' },
+    { id: 6, name: 'Alice Johnson', online: true, profilepicture: require('../assets/basket.jpg'), lastMessage: 'Hello there!', lastOnline: '1 hour ago' },
+    { id: 7, name: 'John Doe', online: true, profilepicture: require('../assets/karaoke.jpg'), lastMessage: 'Hello there!', lastOnline: '1 hour ago' },
+    { id: 8, name: 'Jane Smith', online: false, profilepicture: require('../assets/basket.jpg'), lastMessage: 'Hello there!', lastOnline: '1 hour ago' },
+    { id: 9, name: 'Alice Johnson', online: true, profilepicture: require('../assets/background.jpg'), lastMessage: 'Hello there!', lastOnline: '1 hour ago' },
+    { id: 10, name: 'John Doe', online: true, profilepicture: require('../assets/karaoke.jpg'), lastMessage: 'Hello there!', lastOnline: '1 hour ago' },
+    { id: 11, name: 'Jane Smith', online: false, profilepicture: require('../assets/basket.jpg'), lastMessage: 'Hello there!', lastOnline: '1 hour ago' },
+    { id: 12, name: 'Alice Johnson', online: true, profilepicture: require('../assets/background.jpg'), lastMessage: 'Hello there!', lastOnline: '1 hour ago' },
     // Add more contacts as needed
   ]);
 
@@ -30,15 +35,15 @@ const Contactos = () => {
   }
 
   const handleNavigation1 = () => {
-    // Handle navigation to page 1 here
+    props.navigation.navigate("Home")
   }
 
   const handleNavigation2 = () => {
-    // Handle navigation to page 2 here
+    props.navigation.navigate("Favoritos")
   }
 
   const handleNavigation3 = () => {
-    // Handle navigation to page 3 here
+    props.navigation.navigate("Contactos")
   }
 
   const handleNavigation4 = () => {
@@ -46,7 +51,7 @@ const Contactos = () => {
   }
 
   const handleNavigation5 = () => {
-    // Handle navigation to page 5 here
+    props.navigation.navigate("Settings")
   }
 
 
@@ -56,6 +61,7 @@ const Contactos = () => {
         source={item.profilepicture}
         style={styles.profilePic}
       />
+      {item.online && <View style={styles.onlineIndicator} />}
       <View style={styles.contactInfo}>
         <View style={styles.contactNameContainer}>
           <Text style={styles.contactName}>{item.name}</Text>
@@ -65,12 +71,13 @@ const Contactos = () => {
       </View>
     </View>
   );
+  
 
   const renderOnlineUsers = () => (
     <ScrollView horizontal showsHorizontalScrollIndicator={false}>
       {contacts.map((contact) => (
         contact.online && (
-          <Image
+          <Image 
             key={contact.id}
             source={contact.profilepicture}
             style={styles.onlineProfilePic}
@@ -85,7 +92,7 @@ const Contactos = () => {
       <View style={styles.header}>
         <Text style={styles.title}>Chat</Text>
         <Image
-          source={require('./assets/karaoke.jpg')}
+          source={require('../assets/karaoke.jpg')}
           style={styles.myProfilePic}
         />
       </View>
@@ -194,6 +201,17 @@ const styles = StyleSheet.create({
     borderRadius: 30,
     marginLeft: 10,
   },
+  onlineIndicator: {
+    position: 'relative',
+    bottom: -20,
+    right: 10,
+    width: 11,
+    height: 11,
+    borderRadius: 5,
+    backgroundColor: 'green',
+  },
+  
+  
   myProfilePic: {
     width: 50,
     height: 50,
@@ -257,13 +275,6 @@ const styles = StyleSheet.create({
   onlineIndicatorContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-  },
-  onlineIndicator: {
-    width: 10,
-    height: 10,
-    borderRadius: 5,
-    backgroundColor: 'green',
-    marginRight: 5,
   },
   searchContainer: {
     flexDirection: 'row',

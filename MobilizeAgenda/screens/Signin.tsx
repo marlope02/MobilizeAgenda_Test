@@ -8,7 +8,7 @@ interface SigninScreenProps {
   navigation: any;
 }
 
-const image = require('./assets/background.jpg');
+const image = require('../assets/background.jpg');
 
 
 

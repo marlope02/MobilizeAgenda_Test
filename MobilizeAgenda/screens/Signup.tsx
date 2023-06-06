@@ -4,7 +4,7 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Iocon from 'react-native-vector-icons/AntDesign';
 
 
-const image = require('./assets/background.jpg');
+const image = require('../assets/background.jpg');
 
 
 

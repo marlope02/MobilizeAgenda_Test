@@ -3,11 +3,14 @@ import { View, Text, TextInput, TouchableOpacity, StyleSheet, ScrollView, Image 
 import Icon from 'react-native-vector-icons/Feather';
 
 
+interface HomeScreenProps {
+  navigation: any;
+}
 
 
 
 
-const Home = () => {
+const Home = (props: HomeScreenProps) => {
   const [searchText, setSearchText] = useState('');
 
   const handleSearchTextChange = (text) => {
@@ -19,15 +22,15 @@ const Home = () => {
   }
 
   const handleNavigation1 = () => {
-    // Handle navigation to page 1 here
+    props.navigation.navigate("Home")
   }
 
   const handleNavigation2 = () => {
-    // Handle navigation to page 2 here
+    props.navigation.navigate("Favoritos")
   }
 
   const handleNavigation3 = () => {
-    // Handle navigation to page 3 here
+    props.navigation.navigate("Contactos")
   }
 
   const handleNavigation4 = () => {
@@ -35,8 +38,13 @@ const Home = () => {
   }
 
   const handleNavigation5 = () => {
-    // Handle navigation to page 5 here
+    props.navigation.navigate("Settings")
   }
+
+  const handleActivity = () => {
+    props.navigation.navigate("Activity")
+  }
+
 
 
 
@@ -49,7 +57,7 @@ const Home = () => {
       < View style={styles.header}>
         <Text style={styles.title}>Eventos</Text>
         <Image
-          source={require('./assets/karaoke.jpg')}
+          source={require('../assets/karaoke.jpg')}
           style={styles.myProfilePic}
         />
       </View>
@@ -106,20 +114,20 @@ const Home = () => {
         <View style={styles.squareContainer}>
           <View style={styles.squareRow}>
             <ScrollView horizontal={true}>
-              <TouchableOpacity style={styles.square1}>
-                <Image source={require('./assets/karaoke.jpg')} style={styles.SquareImage} />
+              <TouchableOpacity style={styles.square1} onPress={handleActivity}>
+                <Image source={require('../assets/karaoke.jpg')} style={styles.SquareImage} />
                 <Text style={styles.squareText}>Noite de karaoke</Text>
                 <Text style={styles.squareText}>Café Onófrio</Text>
                 <Text style={styles.squareText}>22h-23h</Text>
               </TouchableOpacity>
               <TouchableOpacity style={styles.square2}>
-                <Image source={require('./assets/basket.jpg')} style={styles.SquareImage} />
+                <Image source={require('../assets/basket.jpg')} style={styles.SquareImage} />
                 <Text style={styles.squareText}>Jogo Basketball</Text>
                 <Text style={styles.squareText}>Pavilhão da Trofa</Text>
                 <Text style={styles.squareText}>22h-23h</Text>
               </TouchableOpacity>
               <TouchableOpacity style={styles.square3}>
-                <Image source={require('./assets/teatro.jpg')} style={styles.SquareImage} />
+                <Image source={require('../assets/teatro.jpg')} style={styles.SquareImage} />
                 <Text style={styles.squareText}>Teatro</Text>
                 <Text style={styles.squareText}>Tivoli</Text>
                 <Text style={styles.squareText}>22h-23h</Text>
@@ -136,19 +144,19 @@ const Home = () => {
           <View style={styles.squareRow}>
             <ScrollView horizontal={true}>
               <TouchableOpacity style={styles.square1}>
-                <Image source={require('./assets/karaoke.jpg')} style={styles.SquareImage} />
+                <Image source={require('../assets/karaoke.jpg')} style={styles.SquareImage} />
                 <Text style={styles.squareText}>Noite de karaoke</Text>
                 <Text style={styles.squareText}>Café Onófrio</Text>
                 <Text style={styles.squareText}>22h-23h</Text>
               </TouchableOpacity>
               <TouchableOpacity style={styles.square2}>
-                <Image source={require('./assets/basket.jpg')} style={styles.SquareImage} />
+                <Image source={require('../assets/basket.jpg')} style={styles.SquareImage} />
                 <Text style={styles.squareText}>Jogo Basketball</Text>
                 <Text style={styles.squareText}>Pavilhão da Trofa</Text>
                 <Text style={styles.squareText}>22h-23h</Text>
               </TouchableOpacity>
               <TouchableOpacity style={styles.square3}>
-                <Image source={require('./assets/teatro.jpg')} style={styles.SquareImage} />
+                <Image source={require('../assets/teatro.jpg')} style={styles.SquareImage} />
                 <Text style={styles.squareText}>Teatro</Text>
                 <Text style={styles.squareText}>Tivoli</Text>
                 <Text style={styles.squareText}>22h-23h</Text>
@@ -166,19 +174,19 @@ const Home = () => {
           <View style={styles.squareRow}>
             <ScrollView horizontal={true}>
               <TouchableOpacity style={styles.square1}>
-                <Image source={require('./assets/karaoke.jpg')} style={styles.SquareImage} />
+                <Image source={require('../assets/karaoke.jpg')} style={styles.SquareImage} />
                 <Text style={styles.squareText}>Noite de karaoke</Text>
                 <Text style={styles.squareText}>Café Onófrio</Text>
                 <Text style={styles.squareText}>22h-23h</Text>
               </TouchableOpacity>
               <TouchableOpacity style={styles.square2}>
-                <Image source={require('./assets/basket.jpg')} style={styles.SquareImage} />
+                <Image source={require('../assets/basket.jpg')} style={styles.SquareImage} />
                 <Text style={styles.squareText}>Jogo Basketball</Text>
                 <Text style={styles.squareText}>Pavilhão da Trofa</Text>
                 <Text style={styles.squareText}>22h-23h</Text>
               </TouchableOpacity>
               <TouchableOpacity style={styles.square3}>
-                <Image source={require('./assets/teatro.jpg')} style={styles.SquareImage} />
+                <Image source={require('../assets/teatro.jpg')} style={styles.SquareImage} />
                 <Text style={styles.squareText}>Teatro</Text>
                 <Text style={styles.squareText}>Tivoli</Text>
                 <Text style={styles.squareText}>22h-23h</Text>
@@ -195,19 +203,19 @@ const Home = () => {
           <View style={styles.squareRow}>
             <ScrollView horizontal={true}>
               <TouchableOpacity style={styles.square1}>
-                <Image source={require('./assets/karaoke.jpg')} style={styles.SquareImage} />
+                <Image source={require('../assets/karaoke.jpg')} style={styles.SquareImage} />
                 <Text style={styles.squareText}>Noite de karaoke</Text>
                 <Text style={styles.squareText}>Café Onófrio</Text>
                 <Text style={styles.squareText}>22h-23h</Text>
               </TouchableOpacity>
               <TouchableOpacity style={styles.square2}>
-                <Image source={require('./assets/basket.jpg')} style={styles.SquareImage} />
+                <Image source={require('../assets/basket.jpg')} style={styles.SquareImage} />
                 <Text style={styles.squareText}>Jogo Basketball</Text>
                 <Text style={styles.squareText}>Pavilhão da Trofa</Text>
                 <Text style={styles.squareText}>22h-23h</Text>
               </TouchableOpacity>
               <TouchableOpacity style={styles.square3}>
-                <Image source={require('./assets/teatro.jpg')} style={styles.SquareImage} />
+                <Image source={require('../assets/teatro.jpg')} style={styles.SquareImage} />
                 <Text style={styles.squareText}>Teatro</Text>
                 <Text style={styles.squareText}>Tivoli</Text>
                 <Text style={styles.squareText}>22h-23h</Text>
@@ -224,19 +232,19 @@ const Home = () => {
           <View style={styles.squareRow}>
             <ScrollView horizontal={true}>
               <TouchableOpacity style={styles.square1}>
-                <Image source={require('./assets/karaoke.jpg')} style={styles.SquareImage} />
+                <Image source={require('../assets/karaoke.jpg')} style={styles.SquareImage} />
                 <Text style={styles.squareText}>Noite de karaoke</Text>
                 <Text style={styles.squareText}>Café Onófrio</Text>
                 <Text style={styles.squareText}>22h-23h</Text>
               </TouchableOpacity>
               <TouchableOpacity style={styles.square2}>
-                <Image source={require('./assets/basket.jpg')} style={styles.SquareImage} />
+                <Image source={require('../assets/basket.jpg')} style={styles.SquareImage} />
                 <Text style={styles.squareText}>Jogo Basketball</Text>
                 <Text style={styles.squareText}>Pavilhão da Trofa</Text>
                 <Text style={styles.squareText}>22h-23h</Text>
               </TouchableOpacity>
               <TouchableOpacity style={styles.square3}>
-                <Image source={require('./assets/teatro.jpg')} style={styles.SquareImage} />
+                <Image source={require('../assets/teatro.jpg')} style={styles.SquareImage} />
                 <Text style={styles.squareText}>Teatro</Text>
                 <Text style={styles.squareText}>Tivoli</Text>
                 <Text style={styles.squareText}>22h-23h</Text>
