@@ -1,9 +1,14 @@
 import React from 'react';
 import { View, Text, ScrollView, StyleSheet, TouchableOpacity } from 'react-native';
 import AntDesignIcon from 'react-native-vector-icons/AntDesign';
-import MaterialCommunityIcon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { useNavigation } from '@react-navigation/native';
 
-const Cidades = () => {
+
+interface CidadesScreenProps {
+  navigation: any;
+}
+
+const Cidades = (props: CidadesScreenProps) => {
   const cidades = [
     'Lisboa',
     'Porto',
@@ -37,10 +42,17 @@ const Cidades = () => {
     'Covilhã',
 
   ];
+
+
+  const navigation = useNavigation();
   
   const handleBack = () => {
-
+    navigation.goBack();
   }
+
+  const handleCidadePress =() => {
+    navigation.goBack();
+  };
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
@@ -51,7 +63,9 @@ const Cidades = () => {
       {cidades.map((cidade, index) => (
         <View key={index}>
           <View style={styles.cidadeContainer}>
-            <Text style={styles.cidade}>{cidade}</Text>
+            <TouchableOpacity onPress={handleCidadePress}>
+              <Text style={styles.cidade}>{cidade}</Text>
+            </TouchableOpacity>
           </View>
           {index !== cidades.length - 1 && <View style={styles.separator} />}
         </View>

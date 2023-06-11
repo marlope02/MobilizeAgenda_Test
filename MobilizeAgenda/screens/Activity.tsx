@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, View, Image, Dimensions, Text, ScrollView, ImageBackground } from 'react-native';
 import AntDesignIcon from 'react-native-vector-icons/AntDesign';
+import { useNavigation } from '@react-navigation/native';
 
 const { width } = Dimensions.get('window');
 
@@ -14,8 +15,11 @@ interface ActivityScreenProps {
 
 const Actividade = (props: ActivityScreenProps) => {
 
+
+  const navigation = useNavigation();
+
   const handleBack = () => {
-    props.navigation.navigate("Home")
+    navigation.goBack();
   }
 
 

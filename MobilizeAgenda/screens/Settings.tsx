@@ -3,17 +3,23 @@ import { View, Text, TextInput, TouchableOpacity, StyleSheet, ScrollView, Image,
 import Icon from 'react-native-vector-icons/AntDesign';
 import Iocon from 'react-native-vector-icons/Feather';
 
-const Settings = () => {
+
+interface SettingsScreenProps {
+  navigation: any;
+}
+
+
+const Settings = (props: SettingsScreenProps) => {
   const handleNavigation1 = () => {
-    // Handle navigation to page 1 here
+    props.navigation.navigate("Home")
   }
 
   const handleNavigation2 = () => {
-    // Handle navigation to page 2 here
+    props.navigation.navigate("Favoritos")
   }
 
   const handleNavigation3 = () => {
-    // Handle navigation to page 3 here
+    props.navigation.navigate("Contactos")
   }
 
   const handleNavigation4 = () => {
@@ -21,16 +27,21 @@ const Settings = () => {
   }
 
   const handleNavigation5 = () => {
-    // Handle navigation to page 5 here
+    props.navigation.navigate("Settings")
   }
 
+
   const handleCidade = () => {
-    // Handle navigation to page 5 here
+    props.navigation.navigate("Cidades")
   }
 
   const handleIdioma = () => {
-    // Handle navigation to page 5 here
+    props.navigation.navigate("Idiomas")
   }
+
+  const handleProfilePress = () => {
+    props.navigation.navigate('Perfil');
+  };
 
   const [darkThemeEnabled, setDarkThemeEnabled] = useState(false);
   const [vibrationEnabled, setVibrationEnabled] = useState(false);
@@ -41,9 +52,11 @@ const Settings = () => {
       <View style={styles.content}>
         <View style={styles.row}>
           <Text style={styles.title}>Definições</Text>
-          <View style={styles.imageProfileContainer}>
-            <Image source={ImgPerfil} style={styles.imageProfile} />
-          </View>
+          <TouchableOpacity onPress={handleProfilePress}>
+            <View style={styles.imageProfileContainer}>
+              <Image source={ImgPerfil} style={styles.imageProfile} />
+            </View>
+          </TouchableOpacity>
         </View>
 
         <View style={styles.space} />

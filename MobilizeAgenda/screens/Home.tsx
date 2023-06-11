@@ -45,6 +45,10 @@ const Home = (props: HomeScreenProps) => {
     props.navigation.navigate("Activity")
   }
 
+  const handleProfilePress = () => {
+    props.navigation.navigate('Perfil');
+  };
+
 
 
 
@@ -56,23 +60,25 @@ const Home = (props: HomeScreenProps) => {
 
       < View style={styles.header}>
         <Text style={styles.title}>Eventos</Text>
-        <Image
-          source={require('../assets/karaoke.jpg')}
-          style={styles.myProfilePic}
-        />
+        <TouchableOpacity onPress={handleProfilePress}>
+          <Image
+            source={require('../assets/karaoke.jpg')}
+            style={styles.myProfilePic}
+          />
+        </TouchableOpacity>
       </View>
       <View style={styles.searchContainer}>
-      <View style={styles.searchInputContainer}>
-      <TouchableOpacity onPress={handleSearch}>
-          <Icon name="search" color="rgba(145, 158, 171, 0.32)" size={24} />
-        </TouchableOpacity>
-        <TextInput
-          style={styles.searchInput}
-          placeholder="Search"
-          value={searchText}
-          onChangeText={handleSearchTextChange}
-          onSubmitEditing={handleSearch}
-        />
+        <View style={styles.searchInputContainer}>
+          <TouchableOpacity onPress={handleSearch}>
+            <Icon name="search" color="rgba(145, 158, 171, 0.32)" size={24} />
+          </TouchableOpacity>
+          <TextInput
+            style={styles.searchInput}
+            placeholder="Search"
+            value={searchText}
+            onChangeText={handleSearchTextChange}
+            onSubmitEditing={handleSearch}
+          />
         </View>
       </View>
 

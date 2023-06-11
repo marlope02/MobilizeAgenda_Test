@@ -6,16 +6,21 @@ import Iocon from 'react-native-vector-icons/AntDesign';
 
 const image = require('../assets/background.jpg');
 
+interface SignupScreenProps {
+  navigation: any;
+}
 
-
-const Signup = () => {
+const Signup = (props: SignupScreenProps) => {
   const [nome, setNome] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
 
+  const handleSignup = () => {
+    props.navigation.navigate('Signin');
+  };
   const handleLogin = () => {
-    // Handle login logic here
+    props.navigation.navigate('Signin');
   };
 
 
@@ -61,24 +66,27 @@ const Signup = () => {
             <View style={styles.line}></View>
           </View>
           <View style={styles.socialButtonsContainer}>
-            <TouchableOpacity>
-            <Iocon name="googleplus" size={55} color="#DB4A39" style={styles.socialIcon}  />
+            <TouchableOpacity onPress={handleSignup}>
+              <Iocon name="googleplus" size={55} color="#DB4A39" style={styles.socialIcon} />
+            </TouchableOpacity >
+            <TouchableOpacity onPress={handleSignup}>
+              <Icon name="facebook" size={55} color="#3B5998" style={styles.socialIcon} />
             </TouchableOpacity>
-            <TouchableOpacity>
-              <Icon name="facebook" size={55} color="#3B5998"  style={styles.socialIcon} />
+            <TouchableOpacity onPress={handleSignup}>
+              <Icon name="twitter" size={55} color="#00ACEE" style={styles.socialIcon} />
             </TouchableOpacity>
-            <TouchableOpacity>
-              <Icon name="twitter" size={55} color="#00ACEE"  style={styles.socialIcon} />
-            </TouchableOpacity>
-            <TouchableOpacity >
-              <Icon name="apple" size={55} color="#6F6E70"  style={styles.socialIcon} />
+            <TouchableOpacity onPress={handleSignup}>
+              <Icon name="apple" size={55} color="#6F6E70" style={styles.socialIcon} />
             </TouchableOpacity>
           </View>
-          <TouchableOpacity style={styles.signupButton} onPress={handleLogin}>
+          <TouchableOpacity style={styles.signupButton} onPress={handleSignup}>
             <Text style={styles.signupButtonText}>Criar Conta</Text>
           </TouchableOpacity>
           <View style={styles.orContainer}>
-            <Text style={styles.orlogin}>Já tem conta? Faça Login</Text>
+            <Text style={styles.orlogin}>Já tem conta? Faça </Text>
+            <TouchableOpacity onPress={handleLogin}>
+              <Text style={styles.orPresslogin}>Login</Text>
+            </TouchableOpacity>
           </View>
         </View>
       </View>
@@ -141,23 +149,29 @@ const styles = StyleSheet.create({
   orText: {
     marginHorizontal: 10,
     fontSize: 14,
-    color: '#444',
+    color: '#221B36',
   },
   orlogin: {
-    marginHorizontal: 10,
+    marginHorizontal: 0,
     marginTop: 20,
     fontSize: 16,
-    color: '#444',
+    color: '#221B36',
+  },
+  orPresslogin: {
+    marginHorizontal: 0,
+    marginTop: 20,
+    fontSize: 16,
+    color: '#006C9C',
   },
   line: {
     flex: 1,
     height: 1,
-    backgroundColor: '#ccc',
+    backgroundColor: 'rgba(145, 158, 171, 0.24)',
   },
   title: {
     marginBottom: 20,
     fontSize: 24,
-    color: '#444',
+    color: '#221B36',
     fontWeight: 'bold',
   },
   socialButtonsContainer: {
@@ -173,7 +187,7 @@ const styles = StyleSheet.create({
   socialIcon: {
     width: 55,
     height: 55,
-    marginHorizontal:10,
+    marginHorizontal: 10,
     marginBottom: 20
   },
 });

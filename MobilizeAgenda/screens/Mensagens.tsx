@@ -2,15 +2,26 @@ import React, { useState } from 'react';
 import { View, FlatList, TextInput, Button, Text, Image, StyleSheet } from 'react-native';
 import AntDesignIcon from 'react-native-vector-icons/AntDesign';
 import MaterialCommunityIcon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { useNavigation } from '@react-navigation/native';
 
-const handleBack = () => {
-  // Handle navigation to page 5 here
-}
+  interface MensagemScreenProps {
+    navigation: any;
+  }
 
-const Mensagens = () => {
+  const Mensagens = (props: MensagemScreenProps) => {
   const [message, setMessage] = useState('');
   const [messages, setMessages] = useState([]);
   const [recipientOnline, setRecipientOnline] = useState(true); // Set the recipient's online status here
+
+
+  const navigation = useNavigation();
+
+  const handleBack = () => {
+    navigation.goBack();
+  }
+
+
+
 
   const handleSendMessage = () => {
     if (message.trim() !== '') {

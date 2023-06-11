@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import { View, Image, TextInput, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 import DateTimePicker from '@react-native-community/datetimepicker';
-//import { ScrollView } from 'react-native-gesture-handler';
+import AntDesignIcon from 'react-native-vector-icons/AntDesign';
+import { useNavigation } from '@react-navigation/native';
+
 
 const countries = [
   'Portugal',
@@ -12,7 +14,12 @@ const countries = [
   'Alemanha',
 ];
 
-const Perfil = () => {
+
+interface PerfilScreenProps {
+  navigation: any;
+}
+
+const Perfil = (props: PerfilScreenProps) => {
   const [userData, setUserData] = useState({
     firstName: 'John',
     lastName: 'Doe',
@@ -47,92 +54,101 @@ const Perfil = () => {
   };
 
   const handlePasswordChange = () => {
-    // Logic for changing password
+    props.navigation.navigate('Password');
   };
 
   const handleSignOut = () => {
-    // Logic for signing out
+    props.navigation.navigate('Signin');
     console.log('Sign Out');
   };
 
+  const navigation = useNavigation();
+
+  const handleBack = () => {
+    navigation.goBack();
+  }
+
   return (
     <View style={styles.container}>
-      
+
       <Image
         source={require('../assets/background.jpg')}
         style={styles.backgroundImage}
       />
+      <View style={styles.buttonContainer}>
+        <AntDesignIcon name="leftcircleo" size={30} color="#fff" onPress={handleBack} />
+      </View>
       <View style={styles.content}>
         <ScrollView>
-        <View style={styles.profileContainer}>
-          <Image
-            source={require('../assets/karaoke.jpg')}
-            style={styles.profilePic}
-          />
-        </View>
-        <InputWithTitle
-          title="Primeiro Nome"
-          value={userData.firstName}
-          onChangeText={(text) => handleInputChange('Primeiro Nome', text)}
-        />
-        <InputWithTitle
-          title="Último Nome"
-          value={userData.lastName}
-          onChangeText={(text) => handleInputChange('Último Nome', text)}
-        />
-        <InputWithTitle
-          title="Email"
-          value={userData.email}
-          onChangeText={(text) => handleInputChange('Email', text)}
-        />
-        
-        <View style={styles.line}></View>
-        
-        <View style={styles.inputContainer}>
-          <Text style={styles.inputTitle}>Data de Nascimento</Text>
-          <TouchableOpacity
-            style={styles.dateInput}
-            onPress={toggleDatePicker}
-          >
-            <Text style={styles.dateText}>{userData.birthDate.toDateString()}</Text>
-          </TouchableOpacity>
-          {userData.showDatePicker && (
-            <DateTimePicker
-              value={userData.birthDate}
-              mode="date"
-              display="default"
-              onChange={onDateChange}
+          <View style={styles.profileContainer}>
+            <Image
+              source={require('../assets/karaoke.jpg')}
+              style={styles.profilePic}
             />
-          )}
-        </View>
-        <DropdownWithTitle
-          title="País"
-          value={userData.country}
-          onValueChange={(value) => handleInputChange('country', value)}
-        >
-          {countries.map((country) => (
-            <Picker.Item key={country} label={country} value={country} />
-          ))}
-        </DropdownWithTitle>
-        <DropdownWithTitle
-          title="Género"
-          value={userData.gender}
-          onValueChange={(value) => handleInputChange('gender', value)}
-        >
-          <Picker.Item label="Feminino" value="Feminino" />
-          <Picker.Item label="Masculino" value="Masculino" />
-          <Picker.Item label="Outro" value="Outro" />
-        </DropdownWithTitle>
-        <View style={styles.buttonsContainer}>
-          <TouchableOpacity style={styles.buttonChange} onPress={handlePasswordChange}>
-            <Text style={styles.buttonTextChange}>Mudar Password</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.buttonSignout} onPress={handleSignOut}>
-            <Text style={styles.buttonTextSignout}>Sign Out</Text>
-          </TouchableOpacity>
-        </View>
-      
-      </ScrollView></View>
+          </View>
+          <InputWithTitle
+            title="Primeiro Nome"
+            value={userData.firstName}
+            onChangeText={(text) => handleInputChange('Primeiro Nome', text)}
+          />
+          <InputWithTitle
+            title="Último Nome"
+            value={userData.lastName}
+            onChangeText={(text) => handleInputChange('Último Nome', text)}
+          />
+          <InputWithTitle
+            title="Email"
+            value={userData.email}
+            onChangeText={(text) => handleInputChange('Email', text)}
+          />
+
+          <View style={styles.line}></View>
+
+          <View style={styles.inputContainer}>
+            <Text style={styles.inputTitle}>Data de Nascimento</Text>
+            <TouchableOpacity
+              style={styles.dateInput}
+              onPress={toggleDatePicker}
+            >
+              <Text style={styles.dateText}>{userData.birthDate.toDateString()}</Text>
+            </TouchableOpacity>
+            {userData.showDatePicker && (
+              <DateTimePicker
+                value={userData.birthDate}
+                mode="date"
+                display="default"
+                onChange={onDateChange}
+              />
+            )}
+          </View>
+          <DropdownWithTitle
+            title="País"
+            value={userData.country}
+            onValueChange={(value) => handleInputChange('country', value)}
+          >
+            {countries.map((country) => (
+              <Picker.Item key={country} label={country} value={country} />
+            ))}
+          </DropdownWithTitle>
+          <DropdownWithTitle
+            title="Género"
+            value={userData.gender}
+            onValueChange={(value) => handleInputChange('gender', value)}
+          >
+            <Picker.Item label="Feminino" value="Feminino" />
+            <Picker.Item label="Masculino" value="Masculino" />
+            <Picker.Item label="Outro" value="Outro" />
+          </DropdownWithTitle>
+          <View style={styles.buttonsContainer}>
+            <TouchableOpacity style={styles.buttonChange} onPress={handlePasswordChange}>
+              <Text style={styles.buttonTextChange}>Mudar Password</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.buttonSignout} onPress={handleSignOut}>
+              <Text style={styles.buttonTextSignout}>Sign Out</Text>
+            </TouchableOpacity>
+          </View>
+
+        </ScrollView></View>
     </View>
   );
 };
@@ -166,6 +182,12 @@ const DropdownWithTitle = ({ title, value, onValueChange, children }) => {
 };
 
 const styles = StyleSheet.create({
+  buttonContainer: {
+    position: 'absolute',
+    top: 20,
+    left: 10,
+    zIndex: 1,
+  },
   container: {
     flex: 1,
     justifyContent: 'center',

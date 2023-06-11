@@ -1,9 +1,15 @@
 import React from 'react';
 import { View, Text, ScrollView, StyleSheet, TouchableOpacity } from 'react-native';
 import AntDesignIcon from 'react-native-vector-icons/AntDesign';
-import MaterialCommunityIcon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { useNavigation } from '@react-navigation/native';
 
-const Idiomas = () => {
+
+interface IdiomasScreenProps {
+  navigation: any;
+}
+
+
+const Idiomas = (props: IdiomasScreenProps) => {
   const idiomas = [
     'Português',
     'Inglês',
@@ -32,9 +38,15 @@ const Idiomas = () => {
 
   ];
   
+  const navigation = useNavigation();
+  
   const handleBack = () => {
-
+    navigation.goBack();
   }
+
+  const handleIdiomaPress =() => {
+    navigation.goBack();
+  };
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
@@ -45,7 +57,9 @@ const Idiomas = () => {
       {idiomas.map((idioma, index) => (
         <View key={index}>
           <View style={styles.idiomaContainer}>
-            <Text style={styles.idioma}>{idioma}</Text>
+            <TouchableOpacity onPress={handleIdiomaPress}>
+              <Text style={styles.idioma}>{idioma}</Text>
+            </TouchableOpacity>
           </View>
           {index !== idiomas.length - 1 && <View style={styles.separator} />}
         </View>

@@ -51,7 +51,7 @@ const Favoritos = (props: FavoritosScreenProps) => {
       title: 'Jogo Basketball',
       place: 'Pavilhão da Trofa',
       time: '22h-23h',
-      
+
     },
     {
       id: 6,
@@ -67,23 +67,23 @@ const Favoritos = (props: FavoritosScreenProps) => {
   const handleCardPress = (cardId) => {
     switch (cardId) {
       case 1:
-        props.navigation.navigate('Activity'); 
+        props.navigation.navigate('Activity');
         break;
       case 2:
-        props.navigation.navigate('Activity'); 
+        props.navigation.navigate('Activity');
         break;
       case 3:
-        props.navigation.navigate('Activity'); 
-      break;
+        props.navigation.navigate('Activity');
+        break;
       case 4:
-        props.navigation.navigate('Activity'); 
-      break;
+        props.navigation.navigate('Activity');
+        break;
       case 5:
-        props.navigation.navigate('Activity'); 
-      break;
+        props.navigation.navigate('Activity');
+        break;
       case 6:
-        props.navigation.navigate('Activity'); 
-      break;
+        props.navigation.navigate('Activity');
+        break;
 
       default:
         break;
@@ -120,15 +120,21 @@ const Favoritos = (props: FavoritosScreenProps) => {
     props.navigation.navigate("Settings")
   }
 
+  const handleProfilePress = () => {
+    props.navigation.navigate('Perfil');
+  };
+
 
   return (
     <View style={styles.container}>
       < View style={styles.header}>
         <Text style={styles.title}>Favoritos</Text>
-        <Image
-          source={require('../assets/karaoke.jpg')}
-          style={styles.myProfilePic}
-        />
+        <TouchableOpacity onPress={handleProfilePress}>
+          <Image
+            source={require('../assets/karaoke.jpg')}
+            style={styles.myProfilePic}
+          />
+        </TouchableOpacity>
       </View>
       <View style={styles.searchContainer}>
         <View style={styles.searchInputContainer}>

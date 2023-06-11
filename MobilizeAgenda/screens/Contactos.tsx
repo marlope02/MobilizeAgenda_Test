@@ -54,47 +54,61 @@ const Contactos = (props: ContactosScreenProps) => {
     props.navigation.navigate("Settings")
   }
 
+  const handleMessagePress = () => {
+    props.navigation.navigate('Mensagens');
+  };
+
+  const handleProfilePress = () => {
+    props.navigation.navigate('Perfil');
+  };
+
 
   const renderContact = ({ item }) => (
-    <View style={styles.contactContainer}>
-      <Image
-        source={item.profilepicture}
-        style={styles.profilePic}
-      />
-      {item.online && <View style={styles.onlineIndicator} />}
-      <View style={styles.contactInfo}>
-        <View style={styles.contactNameContainer}>
-          <Text style={styles.contactName}>{item.name}</Text>
-          <Text style={styles.lastOnline}>{item.lastOnline}</Text>
+    <TouchableOpacity onPress={handleMessagePress}>
+      <View style={styles.contactContainer}>
+        <Image source={item.profilepicture} style={styles.profilePic} />
+        {item.online && <View style={styles.onlineIndicator} />}
+        <View style={styles.contactInfo}>
+          <View style={styles.contactNameContainer}>
+            <Text style={styles.contactName}>{item.name}</Text>
+            <Text style={styles.lastOnline}>{item.lastOnline}</Text>
+          </View>
+          <Text style={styles.lastMessage}>{item.lastMessage}</Text>
         </View>
-        <Text style={styles.lastMessage}>{item.lastMessage}</Text>
       </View>
-    </View>
+    </TouchableOpacity>
   );
-  
+
 
   const renderOnlineUsers = () => (
     <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+
       {contacts.map((contact) => (
         contact.online && (
-          <Image 
-            key={contact.id}
-            source={contact.profilepicture}
-            style={styles.onlineProfilePic}
-          />
+          <TouchableOpacity key={contact.id} onPress={() => handleMessagePress(contact)}>
+            <Image
+              key={contact.id}
+              source={contact.profilepicture}
+              style={styles.onlineProfilePic}
+            />
+          </TouchableOpacity>
         )
       ))}
+
     </ScrollView>
   );
+
 
   return (
     <View style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.title}>Chat</Text>
-        <Image
-          source={require('../assets/karaoke.jpg')}
-          style={styles.myProfilePic}
-        />
+        <TouchableOpacity onPress={handleProfilePress}>
+          <Image
+            source={require('../assets/karaoke.jpg')}
+            style={styles.myProfilePic}
+          />
+        </TouchableOpacity>
       </View>
       <View style={styles.searchContainer}>
         <View style={styles.searchInputContainer}>
@@ -193,7 +207,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: 'bold',
     color: '#212B36',
-    marginLeft:20
+    marginLeft: 20
   },
   profilePic: {
     width: 60,
@@ -210,8 +224,8 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     backgroundColor: 'green',
   },
-  
-  
+
+
   myProfilePic: {
     width: 50,
     height: 50,

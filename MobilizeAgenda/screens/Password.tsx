@@ -1,7 +1,16 @@
 import React, { useState } from 'react';
 import { View, Image, TextInput, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import AntDesignIcon from 'react-native-vector-icons/AntDesign';
+import { useNavigation } from '@react-navigation/native';
 
-const ChangePasswordPage = () => {
+
+
+
+interface PasswordScreenProps {
+  navigation: any;
+}
+
+const ChangePasswordPage = (props: PasswordScreenProps) => {
   const [currentPassword, setCurrentPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [confirmNewPassword, setConfirmNewPassword] = useState('');
@@ -19,9 +28,15 @@ const ChangePasswordPage = () => {
   };
 
   const handleChangePassword = () => {
-    // Logic for changing the password
     console.log('Change Password');
+    props.navigation.navigate('Perfil');
   };
+
+  const navigation = useNavigation();
+
+  const handleBack = () => {
+    navigation.goBack();
+  }
 
   return (
     <View style={styles.container}>
@@ -29,6 +44,9 @@ const ChangePasswordPage = () => {
         source={require('../assets/background.jpg')}
         style={styles.backgroundImage}
       />
+      <View style={styles.buttonContainer}>
+        <AntDesignIcon name="leftcircleo" size={30} color="#fff" onPress={handleBack} />
+      </View>
       <View style={styles.content}>
         <Text style={styles.title}>Mudar Password</Text>
         <View style={styles.inputContainer}>
@@ -67,6 +85,12 @@ const ChangePasswordPage = () => {
 };
 
 const styles = StyleSheet.create({
+  buttonContainer: {
+    position: 'absolute',
+    top: 20,
+    left: 10,
+    zIndex: 1,
+  },
   container: {
     flex: 1,
     justifyContent: 'center',
