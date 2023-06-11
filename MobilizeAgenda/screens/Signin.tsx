@@ -21,7 +21,7 @@ const Signin = (props: SigninScreenProps) => {
   const handleLogin = () => {
     props.navigation.navigate("Home")
   };
-  
+
   const handleSignup = () => {
     props.navigation.navigate("Signup")
   };
@@ -29,8 +29,8 @@ const Signin = (props: SigninScreenProps) => {
 
 
   return (
-    
-        
+
+
     <ImageBackground source={image} style={styles.background}>
       <View style={styles.overlay}>
         <View style={styles.form}>
@@ -54,18 +54,18 @@ const Signin = (props: SigninScreenProps) => {
             <Text style={styles.orText}>Ou entre com:</Text>
             <View style={styles.line}></View>
           </View>
-           <View style={styles.socialButtonsContainer}>
-            <TouchableOpacity>
-            <Iocon name="googleplus" size={55} color="#DB4A39" style={styles.socialIcon}  />
+          <View style={styles.socialButtonsContainer}>
+            <TouchableOpacity onPress={handleLogin}>
+              <Iocon name="googleplus" size={55} color="#DB4A39" style={styles.socialIcon} />
+            </TouchableOpacity >
+            <TouchableOpacity onPress={handleLogin}>
+              <Icon name="facebook" size={55} color="#3B5998" style={styles.socialIcon} />
             </TouchableOpacity>
-            <TouchableOpacity>
-              <Icon name="facebook" size={55} color="#3B5998"  style={styles.socialIcon} />
+            <TouchableOpacity onPress={handleLogin}>
+              <Icon name="twitter" size={55} color="#00ACEE" style={styles.socialIcon} />
             </TouchableOpacity>
-            <TouchableOpacity>
-              <Icon name="twitter" size={55} color="#00ACEE"  style={styles.socialIcon} />
-            </TouchableOpacity>
-            <TouchableOpacity >
-              <Icon name="apple" size={55} color="#6F6E70"  style={styles.socialIcon} />
+            <TouchableOpacity onPress={handleLogin}>
+              <Icon name="apple" size={55} color="#6F6E70" style={styles.socialIcon} />
             </TouchableOpacity>
           </View>
           <TouchableOpacity style={styles.button} onPress={handleLogin}>
@@ -177,7 +177,7 @@ const styles = StyleSheet.create({
   socialIcon: {
     width: 55,
     height: 55,
-    marginHorizontal:10,
+    marginHorizontal: 10,
     marginBottom: 10
   },
 });
