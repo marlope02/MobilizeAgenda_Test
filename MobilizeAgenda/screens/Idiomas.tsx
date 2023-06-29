@@ -71,6 +71,8 @@ const Idiomas = (props: IdiomasScreenProps) => {
 const styles = StyleSheet.create({
   container: {
     padding: 16,
+    backgroundColor: "#fff"
+
   },
   title: {
     fontSize: 24,

@@ -5,7 +5,6 @@ import DateTimePicker from '@react-native-community/datetimepicker';
 import AntDesignIcon from 'react-native-vector-icons/AntDesign';
 import { useNavigation } from '@react-navigation/native';
 
-
 const countries = [
   'Portugal',
   'Estados Unidos',
@@ -13,7 +12,6 @@ const countries = [
   'Austrália',
   'Alemanha',
 ];
-
 
 interface PerfilScreenProps {
   navigation: any;
@@ -25,8 +23,8 @@ const Perfil = (props: PerfilScreenProps) => {
     lastName: 'Doe',
     email: 'johndoe@example.com',
     birthDate: new Date(),
-    country: 'United States',
-    gender: 'Male',
+    country: 'Estados Unidos',
+    gender: 'Masculino',
     showDatePicker: false,
   });
 
@@ -59,18 +57,17 @@ const Perfil = (props: PerfilScreenProps) => {
 
   const handleSignOut = () => {
     props.navigation.navigate('Signin');
-    console.log('Sign Out');
+    console.log('Terminar Sessão');
   };
 
   const navigation = useNavigation();
 
   const handleBack = () => {
     navigation.goBack();
-  }
+  };
 
   return (
     <View style={styles.container}>
-
       <Image
         source={require('../assets/background.jpg')}
         style={styles.backgroundImage}
@@ -89,17 +86,17 @@ const Perfil = (props: PerfilScreenProps) => {
           <InputWithTitle
             title="Primeiro Nome"
             value={userData.firstName}
-            onChangeText={(text) => handleInputChange('Primeiro Nome', text)}
+            onChangeText={(text) => handleInputChange('firstName', text)}
           />
           <InputWithTitle
             title="Último Nome"
             value={userData.lastName}
-            onChangeText={(text) => handleInputChange('Último Nome', text)}
+            onChangeText={(text) => handleInputChange('lastName', text)}
           />
           <InputWithTitle
             title="Email"
             value={userData.email}
-            onChangeText={(text) => handleInputChange('Email', text)}
+            onChangeText={(text) => handleInputChange('email', text)}
           />
 
           <View style={styles.line}></View>
@@ -141,14 +138,14 @@ const Perfil = (props: PerfilScreenProps) => {
           </DropdownWithTitle>
           <View style={styles.buttonsContainer}>
             <TouchableOpacity style={styles.buttonChange} onPress={handlePasswordChange}>
-              <Text style={styles.buttonTextChange}>Mudar Password</Text>
+              <Text style={styles.buttonTextChange}>Alterar Palavra-passe</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.buttonSignout} onPress={handleSignOut}>
-              <Text style={styles.buttonTextSignout}>Sign Out</Text>
+              <Text style={styles.buttonTextSignout}>Terminar Sessão</Text>
             </TouchableOpacity>
           </View>
-
-        </ScrollView></View>
+        </ScrollView>
+      </View>
     </View>
   );
 };
@@ -219,7 +216,6 @@ const styles = StyleSheet.create({
   },
   inputContainer: {
     marginBottom: 10,
-
   },
   inputTitle: {
     fontSize: 16,
@@ -231,7 +227,7 @@ const styles = StyleSheet.create({
     borderColor: 'gray',
     borderWidth: 1,
     paddingHorizontal: 10,
-    borderRadius: 8, // Added borderRadius
+    borderRadius: 8,
   },
   dateInput: {
     height: 40,
@@ -239,7 +235,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     paddingHorizontal: 10,
     justifyContent: 'center',
-    borderRadius: 8, // Added borderRadius
+    borderRadius: 8,
   },
   dateText: {
     fontSize: 16,
@@ -282,13 +278,13 @@ const styles = StyleSheet.create({
     color: '#FFAB00',
     textAlign: 'center',
     fontWeight: 'bold',
-    fontSize: 15
+    fontSize: 15,
   },
   buttonTextSignout: {
     color: '#FFFFFF',
     textAlign: 'center',
     fontWeight: 'bold',
-    fontSize: 15
+    fontSize: 15,
   },
   dropdown: {
     height: 40,

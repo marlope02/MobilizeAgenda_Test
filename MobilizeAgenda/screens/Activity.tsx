@@ -1,6 +1,7 @@
-import React from 'react';
-import { StyleSheet, View, Image, Dimensions, Text, ScrollView, ImageBackground } from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, View, Image, Dimensions, Text, ScrollView, ImageBackground, TouchableOpacity } from 'react-native';
 import AntDesignIcon from 'react-native-vector-icons/AntDesign';
+import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 import { useNavigation } from '@react-navigation/native';
 
 const { width } = Dimensions.get('window');
@@ -14,23 +15,32 @@ interface ActivityScreenProps {
 
 
 const Actividade = (props: ActivityScreenProps) => {
-
-
   const navigation = useNavigation();
+  const [isHeartFilled, setIsHeartFilled] = useState(false);
 
   const handleBack = () => {
     navigation.goBack();
-  }
+  };
+
+  const handleHeartPress = () => {
+    setIsHeartFilled(!isHeartFilled);
+  };
 
 
 
   return (
     <View style={styles.container}>
-      <ImageBackground style={styles.image} source={require('../assets/karaoke.jpg')}>
-        <View style={styles.buttonContainer}>
-        <AntDesignIcon name="leftcircleo" size={30} color="white" onPress={handleBack}/>
-        </View>
-      </ImageBackground>
+    <ImageBackground style={styles.image} source={require('../assets/karaoke.jpg')}>
+      <View style={styles.buttonContainer}>
+        <AntDesignIcon name="leftcircleo" size={30} color="white" onPress={handleBack} />
+      </View>
+      <View style={styles.heartIconContainer}>
+        <TouchableOpacity onPress={handleHeartPress}>
+          <FontAwesomeIcon name="heart" size={30} color={isHeartFilled ? 'red' : 'white'} />
+        </TouchableOpacity>
+      </View>
+    </ImageBackground>
+    <Text style={styles.title}>Noite de Karaoke</Text>
 
       <Text style={styles.title}>Noite de Karaoke</Text>
 
@@ -61,6 +71,8 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'flex-start',
+    backgroundColor: "#fff"
+
   },
   image: {
     width: '100%',
@@ -70,6 +82,13 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: 20,
     left: 10,
+    zIndex: 1,
+  },
+  heartIconContainer: {
+    position: 'absolute',
+    bottom: 0,
+    right: 0,
+    padding: 10,
     zIndex: 1,
   },
   title: {

@@ -89,7 +89,7 @@ const Settings = (props: SettingsScreenProps) => {
           <Switch
             style={styles.switch}
             trackColor={{ false: '#871D18', true: '#007B55' }}
-            thumbColor={vibrationEnabled ? '#ffffff' : '#fffffff'}
+            thumbColor={vibrationEnabled ? '#ffffff' : '#ffffff'}
             onValueChange={value => setVibrationEnabled(value)}
             value={vibrationEnabled}
           />
@@ -125,6 +125,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: 20,
+    backgroundColor: "#fff"
+
   },
   content: {
     flex: 1,
